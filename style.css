@@ -10,3 +10,90 @@ html[lang="en"] .section-heading,html[lang="en"] .card-head,html[lang="en"] .qui
 html[lang="en"] .paper,html[lang="en"] .program-card,html[lang="en"] .debug-card,html[lang="en"] .qa-item{direction:ltr;text-align:left}
 html[lang="en"] pre,html[lang="en"] code{direction:ltr;text-align:left}
 html[lang="en"] .footer{direction:ltr}
+
+
+/* Responsive layout improvements for phones, tablets and desktops */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{margin:0;min-width:320px;max-width:100%;overflow-x:hidden}
+img,svg,video,canvas,iframe{max-width:100%;height:auto}
+button,a{ -webkit-tap-highlight-color:transparent }
+button{touch-action:manipulation}
+pre{max-width:100%;overflow-x:auto;white-space:pre}
+.container,.wrap,.section,.lecture-section{width:100%;max-width:100%;min-width:0}
+.site-header{width:100%;max-width:100%;min-width:0;z-index:1000}
+.site-header nav a{white-space:nowrap}
+.hero,.stats-grid,.roadmap,.content-grid,.program-list,.debug-list,.qa-list,.tips-grid{min-width:0}
+.hero>* ,.stats-grid>* ,.roadmap>* ,.content-grid>* ,.program-list>* ,.debug-list>* ,.qa-list>*{min-width:0}
+.paper,.program-card,.debug-card,.qa-item,.quiz-card,.stat{min-width:0;overflow-wrap:anywhere}
+table{display:block;max-width:100%;overflow-x:auto}
+input,select,textarea{max-width:100%;font-size:16px}
+button{max-width:100%}
+@media (min-width:1200px){
+  .site-header{padding-left:max(5%,calc((100% - 1180px)/2));padding-right:max(5%,calc((100% - 1180px)/2))}
+  .hero,.stats-grid,.section-inner{max-width:1180px;margin-left:auto;margin-right:auto}
+}
+@media (max-width:1024px){
+  .site-header{padding-left:18px;padding-right:18px}
+  .site-header nav{gap:8px}
+  .site-header nav a{font-size:11px}
+  .hero{padding-left:5%;padding-right:5%}
+  .section{padding-left:5%;padding-right:5%}
+}
+@media (max-width:760px){
+  .site-header{height:64px;padding:0 10px;display:flex;align-items:center;gap:7px}
+  .brand{min-width:0;flex:1 1 auto;overflow:hidden}
+  .brand>span:last-child{min-width:0}
+  .brand b{font-size:15px}
+  .brand-mark{flex:0 0 35px}
+  .menu-toggle,.theme-btn{display:flex;align-items:center;justify-content:center;flex:0 0 36px;width:36px;height:36px;padding:0}
+  .lang-btn{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:62px;height:36px;padding:0 8px;font-size:12px}
+  .site-header nav{top:64px;max-height:calc(100dvh - 64px);overflow-y:auto;z-index:1001}
+  .hero{width:100%;padding:0 16px;margin:22px auto 28px;grid-template-columns:minmax(0,1fr);gap:20px}
+  .hero h1{font-size:clamp(32px,8vw,43px);line-height:1.2;overflow-wrap:anywhere}
+  .hero-code{width:100%;max-width:100%;transform:none}
+  .hero-code pre{font-size:12px}
+  .stats-grid{width:calc(100% - 32px);margin-left:auto;margin-right:auto;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .section,.lecture-section{padding-left:16px;padding-right:16px}
+  .section-heading{width:100%;min-width:0}
+  .roadmap,.content-grid,.program-list,.debug-list,.qa-list{grid-template-columns:minmax(0,1fr)}
+  .options{grid-template-columns:minmax(0,1fr)}
+  .quiz-top{flex-wrap:wrap;gap:10px}
+  .quiz-card{padding:16px}
+  .quiz-card h3{font-size:16px;line-height:1.6}
+  .option{text-align:start;white-space:normal;overflow-wrap:anywhere;line-height:1.5}
+  .quiz-controls{flex-wrap:wrap}
+  .tips-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .footer{padding:28px 14px}
+}
+@media (max-width:480px){
+  .site-header{gap:5px;padding:0 7px}
+  .brand b{font-size:13px}
+  .brand-mark{width:32px;height:32px;flex-basis:32px}
+  .menu-toggle,.theme-btn{width:33px;height:33px;flex-basis:33px}
+  .lang-btn{min-width:56px;height:33px;padding:0 6px;font-size:11px}
+  .hero h1{font-size:clamp(29px,9vw,36px)}
+  .hero-meta{flex-wrap:wrap}
+  .hero-actions{flex-wrap:wrap}
+  .stats-grid{gap:8px}
+  .stat{padding:12px 9px}
+  .stat strong{font-size:21px}
+  .tips-grid{grid-template-columns:minmax(0,1fr)}
+  .quiz-card{padding:13px}
+  .score-chip{padding:7px 10px}
+  .progress-track{width:min(100%,260px)}
+  .section-heading h2{font-size:22px}
+  .footer-logo{font-size:27px}
+}
+@media (max-width:360px){
+  .site-header{gap:4px;padding:0 5px}
+  .brand b{font-size:12px}
+  .brand-mark{width:29px;height:29px;flex-basis:29px}
+  .menu-toggle,.theme-btn{width:30px;height:30px;flex-basis:30px}
+  .lang-btn{min-width:51px;height:30px;font-size:10px}
+  .hero h1{font-size:29px}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}

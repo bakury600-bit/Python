@@ -146,69 +146,69 @@ function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;',
 document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(!b)return;const el=document.getElementById(b.dataset.copy);navigator.clipboard?.writeText(el.innerText).then(()=>{b.textContent='تم النسخ ✓';setTimeout(()=>b.textContent='نسخ الكود',1400)}).catch(()=>b.textContent='انسخ يدوياً')});
 
 const questions=[
-['ما المقصود بالمتغير في Python؟',['حاوية مسماة تخزن قيمة','نوع من الحلقات','دالة للطباعة','عامل مقارنة'],0],
-['أي عامل يستخدم لإسناد قيمة؟',['==','=','!=','>='],1],
-['أي اسم متغير صحيح؟',['2score','total-price','total_price','class'],2],
-['هل Python حساسة لحالة الأحرف؟',['لا','نعم','فقط في النصوص','فقط بالأرقام'],1],
-['ما نوع القيمة 25؟',['float','str','int','bool'],2],
-['ما نوع القيمة 3.14؟',['int','float','str','bool'],1],
-['ما نوع "123"؟',['int','float','str','bool'],2],
-['أي دالة تفحص نوع القيمة؟',['len()','type()','input()','range()'],1],
-['ما ناتج len("Python")؟',['5','6','7','8'],1],
-['ما ناتج "ha" * 3؟',['ha3','hahaha','ha ha','Error'],1],
-['ماذا ترجع input() دائماً؟',['int','float','str','bool'],2],
-['ما ناتج int(3.9)؟',['4','3.9','3','Error'],2],
-['ما ناتج float(5)؟',['5','5.0','"5"','Error'],1],
-['ما ناتج 7 / 2 في Python؟',['3','3.5','4','2'],1],
-['ما ناتج 17 % 5؟',['3','5','2','1'],2],
-['ما ناتج 2 ** 3؟',['6','8','9','5'],1],
-['ما ناتج 2 + 3 * 4؟',['20','14','24','11'],1],
-['أي عامل يعني لا يساوي؟',['=','==','!=','<='],2],
-['متى تكون and صحيحة؟',['إذا تحقق أحد الشرطين','إذا تحقق الشرطان','دائماً','إذا لم يتحقق أي شرط'],1],
-['ماذا تفعل not؟',['تجمع','تكرر','تعكس القيمة المنطقية','تقارن النصوص'],2],
-['ما الاختصار المكافئ لـ x = x + 5؟',['x =+ 5','x += 5','x ++ 5','x ** 5'],1],
-['أي صيغة تعرض متغيراً داخل النص بسهولة؟',['f-string','range','while','type'],0],
-['ما معنى :.2f؟',['رقمان صحيحان','منزلتان عشريتان','حذف الأرقام','فاصل آلاف'],1],
-['أي كلمة تبدأ شرطاً؟',['for','while','if','def'],2],
-['ما الرمز الواجب وضعه بعد سطر if؟',[';','.',':',','],2],
-['كم مسافة إزاحة موصى بها في أمثلة المحاضرة؟',['مسافة واحدة','مسافتان','4 مسافات','8 مسافات'],2],
-['متى تنفذ كتلة else؟',['إذا كان if True','إذا كان الشرط False','دائماً قبل if','بعد كل سطر'],1],
-['كيف تعمل elif؟',['تنفذ كل الفروع','تفحص احتمالاً إضافياً بالترتيب','تنهي البرنامج','تكرر الكود'],1],
-['أي فرع ينفذ في if-elif-else؟',['كل الفروع الصحيحة','أول شرط True فقط','آخر فرع دائماً','لا شيء'],1],
-['ما الخطأ في if age = 18؟',['يجب استخدام == للمقارنة','يجب استخدام +=','يجب حذف if','لا يوجد خطأ'],0],
-['ما نتيجة bool("")؟',['True','False','None','Error'],1],
-['من أي إصدار يتوفر match-case؟',['3.6','3.8','3.10','2.7'],2],
-['ما وظيفة while؟',['التكرار حسب شرط','تعريف متغير','تحويل نوع','طباعة نص فقط'],0],
-['متى نستخدم for غالباً؟',['عندما لا نعرف متى يتوقف الإدخال','عندما نعرف عدد التكرارات أو نتصفح تسلسلاً','للمقارنة فقط','بدلاً من input دائماً'],1],
-['ما القيم التي ينتجها range(5)؟',['1 إلى 5','0 إلى 5','0 إلى 4','1 إلى 4'],2],
-['ما ناتج range(1, 6)؟',['1,2,3,4,5','1,2,3,4,5,6','0,1,2,3,4,5','2,3,4,5,6'],0],
-['ما وظيفة break؟',['يتجاوز التكرار الحالي','ينهي الحلقة فوراً','يعيد الحلقة للبداية','يوقف الحاسوب'],1],
-['ما وظيفة continue؟',['ينهي البرنامج','ينهي الحلقة نهائياً','يتجاوز بقية التكرار الحالي','يطبع قيمة'],2],
-['ما سبب الحلقة اللانهائية غالباً في while؟',['استخدام print','نسيان تحديث المتغير','استخدام int','وجود else'],1],
-['ما قيمة range(5, 0, -1)؟',['0 إلى 5','5,4,3,2,1','5,4,3,2,1,0','1,2,3,4,5'],1],
-['ما معنى Sentinel Value؟',['قيمة بداية','قيمة خاصة توقف الحلقة','نوع بيانات','عامل منطقي'],1],
-['ماذا تفعل while True مع break؟',['حلقة لا يمكن إيقافها','حلقة تستمر حتى يتحقق شرط الخروج','تنفذ مرة واحدة فقط','تعطي SyntaxError'],1],
-['ما معنى Nested Loops؟',['شروط متداخلة','حلقة داخل حلقة','متغيرات متعددة','حلقات متتالية فقط'],1],
-['ما وظيفة end في print؟',['يحدد نوع المتغير','يغير ما يطبع في نهاية السطر','يوقف البرنامج','يكرر الطباعة'],1],
-['ما هو Accumulator؟',['متغير يجمع القيم تدريجياً','حلقة لا نهائية','شرط مركب','نص'],0],
-['ما هو Counter؟',['متغير لعد مرات حدوث شيء','متغير نصي فقط','عامل قسمة','دالة تحويل'],0],
-['ما ناتج مجموع 1 إلى 100؟',['100','1000','5050','5000'],2],
-['ما قيمة 5!؟',['25','60','100','120'],3],
-['أي عامل يستخرج آخر رقم؟',['//','% 10','**','/'],1],
-['أي عامل يحذف آخر رقم صحيح من العدد؟',['// 10','% 10','* 10','+ 10'],0]
+['What is a variable in Python?',['A named container that stores a value','A type of loop','A function for printing','A comparison operator'],0],
+['Which operator is used to assign a value?',['==','=','!=','>='],1],
+['Which is a valid variable name?',['2score','total-price','total_price','class'],2],
+['Is Python case-sensitive?',['No','Yes','Only in strings','Only for numbers'],1],
+['What is the data type of 25?',['float','str','int','bool'],2],
+['What is the data type of 3.14?',['int','float','str','bool'],1],
+['What is the data type of "123"?',['int','float','str','bool'],2],
+['Which function checks the type of a value?',['len()','type()','input()','range()'],1],
+['What is the result of len("Python")?',['5','6','7','8'],1],
+['What is the result of "ha" * 3?',['ha3','hahaha','ha ha','Error'],1],
+['What type of value does input() always return?',['int','float','str','bool'],2],
+['What is the result of int(3.9)?',['4','3.9','3','Error'],2],
+['What is the result of float(5)?',['5','5.0','"5"','Error'],1],
+['What is the result of 7 / 2 in Python?',['3','3.5','4','2'],1],
+['What is the result of 17 % 5?',['3','5','2','1'],2],
+['What is the result of 2 ** 3?',['6','8','9','5'],1],
+['What is the result of 2 + 3 * 4?',['20','14','24','11'],1],
+['Which operator means "not equal to"?',['=','==','!=','<='],2],
+['When is the expression using and True?',['When either condition is true','When both conditions are true','Always','When neither condition is true'],1],
+['What does not do?',['Adds values','Repeats code','Reverses a Boolean value','Compares strings'],2],
+['Which is the shorthand equivalent of x = x + 5?',['x =+ 5','x += 5','x ++ 5','x ** 5'],1],
+['Which format makes it easy to insert a variable into a string?',['f-string','range','while','type'],0],
+['What does :.2f mean?',['Two integers','Two decimal places','Remove digits','Thousands separator'],1],
+['Which keyword starts a conditional statement?',['for','while','if','def'],2],
+['Which symbol must be placed after an if line?',[';','.',':',','],2],
+['How many indentation spaces are recommended in the lecture examples?',['One space','Two spaces','4 spaces','8 spaces'],2],
+['When does an else block execute?',['When if is True','When the condition is False','Always before if','After every line'],1],
+['How does elif work?',['Executes every branch','Checks an additional possibility in order','Ends the program','Repeats the code'],1],
+['Which branch runs in an if-elif-else statement?',['All true branches','Only the first condition that is True','Always the last branch','None'],1],
+['What is wrong with if age = 18?',['Use == for comparison','Use +=','Remove if','There is no error'],0],
+['What is the result of bool("")?',['True','False','None','Error'],1],
+['Starting from which Python version is match-case available?',['3.6','3.8','3.10','2.7'],2],
+['What is the purpose of a while loop?',['Repeats while a condition is true','Defines a variable','Converts a type','Only prints text'],0],
+['When is for commonly used?',['When we do not know when input will stop','When the number of iterations is known or when traversing a sequence','Only for comparisons','Always instead of input'],1],
+['What values are produced by range(5)?',['1 to 5','0 to 5','0 to 4','1 to 4'],2],
+['What values are produced by range(1, 6)?',['1,2,3,4,5','1,2,3,4,5,6','0,1,2,3,4,5','2,3,4,5,6'],0],
+['What does break do?',['Skips the current iteration','Immediately terminates the loop','Restarts the loop','Shuts down the computer'],1],
+['What does continue do?',['Ends the program','Terminates the loop completely','Skips the rest of the current iteration','Prints a value'],2],
+['What is a common cause of an infinite while loop?',['Using print','Forgetting to update the variable','Using int','Having else'],1],
+['What values are produced by range(5, 0, -1)?',['0 to 5','5,4,3,2,1','5,4,3,2,1,0','1,2,3,4,5'],1],
+['What is a sentinel value?',['An initial value','A special value that stops a loop','A data type','A logical operator'],1],
+['What does while True with break create?',['A loop that cannot be stopped','A loop that continues until the exit condition is met','A loop that runs only once','A SyntaxError'],1],
+['What are nested loops?',['Nested conditions','A loop inside another loop','Multiple variables','Only consecutive loops'],1],
+['What is the purpose of end in print()?',['Specifies the variable type','Changes what is printed at the end of the line','Stops the program','Repeats the printing'],1],
+['What is an accumulator?',['A variable that gradually adds values','An infinite loop','A compound condition','A string'],0],
+['What is a counter?',['A variable that counts occurrences','A string-only variable','A division operator','A conversion function'],0],
+['What is the sum of the integers from 1 to 100?',['100','1000','5050','5000'],2],
+['What is the value of 5 factorial (5!)?',['25','60','100','120'],3],
+['Which operator extracts the last digit of an integer?',['//','% 10','**','/'],1],
+['Which operator removes the last digit of an integer?',['// 10','% 10','* 10','+ 10'],0]
 ];
 let qIndex=0,answers=Array(questions.length).fill(null);
 function renderQuiz(){
  const q=questions[qIndex],area=$('#quizArea');
- $('#quizProgressText').textContent=`السؤال ${qIndex+1} من ${questions.length}`;
+ $('#quizProgressText').textContent=`Question ${qIndex+1} of ${questions.length}`;
  $('#quizProgress').style.width=((qIndex+1)/questions.length*100)+'%';
  $('#score').textContent=answers.reduce((n,a,i)=>n+(a===questions[i][2]?1:0),0);
- area.innerHTML=`<span class="q-label">QUESTION ${String(qIndex+1).padStart(2,'0')}</span><h3>${q[0]}</h3><div class="options">${q[1].map((o,i)=>`<button class="option ${answers[qIndex]===i?'selected':''}" data-opt="${i}">${['أ','ب','ج','د'][i]}) ${o}</button>`).join('')}</div>${answers[qIndex]!==null?`<div class="feedback">${answers[qIndex]===q[2]?'إجابة صحيحة ✓':'إجابة غير صحيحة ✕'} — الإجابة الصحيحة: ${q[1][q[2]]}</div>`:''}`;
+ area.innerHTML=`<span class="q-label">QUESTION ${String(qIndex+1).padStart(2,'0')}</span><h3>${q[0]}</h3><div class="options">${q[1].map((o,i)=>`<button class="option ${answers[qIndex]===i?'selected':''}" data-opt="${i}">${String.fromCharCode(65+i)}) ${o}</button>`).join('')}</div>${answers[qIndex]!==null?`<div class="feedback">${answers[qIndex]===q[2]?'Correct answer ✓':'Incorrect answer ✕'} — Correct answer: ${q[1][q[2]]}</div>`:''}`;
  $$('.option').forEach(b=>b.onclick=()=>{answers[qIndex]=+b.dataset.opt;renderQuiz()});
- $('#prevQuestion').disabled=qIndex===0;$('#nextQuestion').textContent=qIndex===questions.length-1?'عرض النتيجة':'التالي';
+ $('#prevQuestion').disabled=qIndex===0;$('#nextQuestion').textContent=qIndex===questions.length-1?'Show Results':'Next';
 }
 $('#prevQuestion').onclick=()=>{if(qIndex>0){qIndex--;renderQuiz()}};
-$('#nextQuestion').onclick=()=>{if(qIndex<questions.length-1){qIndex++;renderQuiz()}else{const score=answers.reduce((n,a,i)=>n+(a===questions[i][2]?1:0),0);$('#quizResult').hidden=false;$('#quizResult').innerHTML=`<h3>انتهى الاختبار</h3><strong>${score} / ${questions.length}</strong><p>النسبة: ${Math.round(score/questions.length*100)}%</p><button class="btn primary" id="reviewWrong">مراجعة الأسئلة الخاطئة</button>`;$('#reviewWrong').onclick=()=>{const wrong=questions.map((q,i)=>({q,i})).filter(x=>answers[x.i]!==x.q[2]);alert(wrong.length?wrong.map(x=>`س${x.i+1}: ${x.q[0]}\\nالصحيح: ${x.q[1][x.q[2]]}`).join('\\n\\n'):'ممتاز! كل إجاباتك صحيحة.')}}};
+$('#nextQuestion').onclick=()=>{if(qIndex<questions.length-1){qIndex++;renderQuiz()}else{const score=answers.reduce((n,a,i)=>n+(a===questions[i][2]?1:0),0);$('#quizResult').hidden=false;$('#quizResult').innerHTML=`<h3>انتهى الاختبار</h3><strong>${score} / ${questions.length}</strong><p>Percentage: ${Math.round(score/questions.length*100)}%</p><button class="btn primary" id="reviewWrong">Review Incorrect Answers</button>`;$('#reviewWrong').onclick=()=>{const wrong=questions.map((q,i)=>({q,i})).filter(x=>answers[x.i]!==x.q[2]);alert(wrong.length?wrong.map(x=>`Q${x.i+1}: ${x.q[0]}\\nCorrect: ${x.q[1][x.q[2]]}`).join('\\n\\n'):'Excellent! All your answers are correct.')}}};
 $('#restartQuiz').onclick=()=>{qIndex=0;answers=Array(questions.length).fill(null);$('#quizResult').hidden=true;renderQuiz()};
 renderQuiz();
 
