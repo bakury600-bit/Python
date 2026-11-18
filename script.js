@@ -1,127 +1,425 @@
-const data = {
-ar: {
- subtitle:"مركز تعلم البرمجة", welcome:"أهلاً بك في رحلة بايثون", level:"من الأساسيات إلى التطبيق",
- navHome:"الرئيسية",navLessons:"الشروحات",navPrograms:"البرامج المهمة",navMcq:"اختبار MCQ",navDebug:"تصحيح الأخطاء",navOutputs:"نتائج البرامج",
- heroEyebrow:"YOUR PYTHON LEARNING SPACE",heroTitle:"تعلّم بايثون <em>بالفهم والتطبيق</em>",heroDesc:"ملخصات واضحة، أمثلة عملية، اختبارات، وتدريب على اكتشاف الأخطاء — في مكان واحد.",startLearning:"ابدأ التعلّم ←",
- statLessons:"محاضرات مشروحة",statPrograms:"برامج تدريبية",statQuestions:"أسئلة اختيارية",statErrors:"تحديات تصحيح",workspace:"LEARNING WORKSPACE",homeTitle:"لوحة التعلّم",searchPlaceholder:"ابحث عن مفهوم أو برنامج...",
- continueTitle:"ابدأ من هنا",continueDesc:"اختر القسم الذي تريد مراجعته اليوم.",feature1:"شرح المحاضرات",feature1d:"Variables · Conditions · Loops",feature2:"برامج مهمة",feature2d:"أمثلة عملية مع شرح وناتج",feature3:"اختبر معلوماتك",feature3d:"MCQ واحسب درجتك فوراً",feature4:"اكتشف الخطأ",feature4d:"حلّل الكود ثم شاهد التصحيح",
- roadmap:"خريطة المحتوى",road1:"المحاضرة الثانية",road2:"المحاضرة الثالثة",road3:"المحاضرة الرابعة",tipTitle:"نصيحة دراسية",tipText:"عند دراسة أي برنامج، لا تحفظ الناتج فقط. تتبّع قيمة كل متغير بعد كل سطر، واسأل نفسك لماذا نُفّذ هذا السطر؟",
- lessonsHeading:"المحاضرات والشروحات",lessonsSub:"شرح الفكرة، الصيغة، المثال، والنقاط المهمة.",programsHeading:"البرامج المهمة",programsSub:"اقرأ الكود، افهم كل خطوة، ثم اكشف الناتج التجريبي.",mcqHeading:"اختبار الاختيار من متعدد",mcqSub:"اختر إجابة واحدة لكل سؤال، ثم اعرض نتيجتك.",debugHeading:"مختبر تصحيح الأخطاء",debugSub:"حاول تحديد المشكلة قبل الضغط على زر إظهار الحل.",outputsHeading:"توقّع ناتج البرنامج",outputsSub:"اقرأ الكود وتتبع التنفيذ، ثم اكشف الناتج وتفسيره.",reset:"إعادة الاختبار",checkAnswers:"تصحيح الإجابات",footerText:"محتوى تعليمي للمراجعة والتدريب · إصدار تجريبي",
- showOutput:"عرض الناتج",hideOutput:"إخفاء الناتج",showFix:"إظهار التصحيح",hideFix:"إخفاء التصحيح",why:"السبب",fix:"التصحيح",sample:"ناتج تجريبي",answered:"تمت الإجابة",score:"درجتك",of:"من",allAnswered:"أجب عن جميع الأسئلة أولاً.",correct:"إجابة صحيحة",incorrect:"إجابة غير صحيحة"
-},
-en: {
- subtitle:"Programming Learning Center",welcome:"Welcome to your Python journey",level:"From fundamentals to practice",
- navHome:"Home",navLessons:"Lessons",navPrograms:"Key Programs",navMcq:"MCQ Quiz",navDebug:"Fix Errors",navOutputs:"Program Outputs",
- heroEyebrow:"YOUR PYTHON LEARNING SPACE",heroTitle:"Learn Python <em>with understanding & practice</em>",heroDesc:"Clear summaries, practical examples, quizzes, and debugging practice — all in one place.",startLearning:"Start learning →",
- statLessons:"Lessons explained",statPrograms:"Practice programs",statQuestions:"MCQ questions",statErrors:"Debug challenges",workspace:"LEARNING WORKSPACE",homeTitle:"Learning dashboard",searchPlaceholder:"Search a concept or program...",
- continueTitle:"Start here",continueDesc:"Choose the section you want to review today.",feature1:"Lesson explanations",feature1d:"Variables · Conditions · Loops",feature2:"Key programs",feature2d:"Practical examples with explanation",feature3:"Test your knowledge",feature3d:"MCQ and instant scoring",feature4:"Find the bug",feature4d:"Analyze code and reveal the fix",
- roadmap:"Content roadmap",road1:"Lecture Two",road2:"Lecture Three",road3:"Lecture Four",tipTitle:"Study tip",tipText:"When studying a program, do not memorize only the output. Track every variable after each line and ask why that line runs.",
- lessonsHeading:"Lessons & explanations",lessonsSub:"Understand the idea, syntax, example, and key points.",programsHeading:"Important programs",programsSub:"Read the code, understand each step, then reveal the sample output.",mcqHeading:"Multiple-choice quiz",mcqSub:"Choose one answer for each question, then check your score.",debugHeading:"Debugging lab",debugSub:"Try to identify the issue before revealing the solution.",outputsHeading:"Predict the program output",outputsSub:"Trace the code, then reveal the output and explanation.",reset:"Reset quiz",checkAnswers:"Check answers",footerText:"Learning material for review and practice · Demo version",
- showOutput:"Show output",hideOutput:"Hide output",showFix:"Reveal fix",hideFix:"Hide fix",why:"Why",fix:"Correction",sample:"Sample output",answered:"answered",score:"Your score",of:"out of",allAnswered:"Please answer every question first.",correct:"Correct answer",incorrect:"Incorrect answer"
-}
-};
+
+const $ = selector => document.querySelector(selector);
+
+// ===============================
+// 1. المحاضرات
+// ===============================
 
 const lessons = [
-{n:"02",ar:"المتغيرات وأنواع البيانات والعمليات",en:"Variables, Data Types & Operators",sub:"Lecture 2",
- arBody:`<h4>1) المتغيرات Variables</h4><p>المتغير اسم نخزن بداخله قيمة لاستخدامها لاحقاً. مثال: <code>age = 20</code> يخزن العدد 20 داخل المتغير age.</p><pre class="code-block">name = "Sara"\nage = 20\nprint(name)\nprint(age)</pre><h4>2) أنواع البيانات Data Types</h4><ul><li><b>int:</b> عدد صحيح مثل 7.</li><li><b>float:</b> عدد عشري مثل 3.5.</li><li><b>str:</b> نص بين علامات اقتباس مثل "Python".</li><li><b>bool:</b> قيمة منطقية True أو False.</li></ul><p>استخدم <code>type(value)</code> لمعرفة نوع القيمة.</p><h4>3) التحويل Casting والإدخال</h4><p><code>input()</code> يستقبل نصاً من المستخدم. إذا أردت رقماً استخدم <code>int(input())</code> أو <code>float(input())</code>.</p><pre class="code-block">age = int(input("Enter age: "))\nprint(age + 1)</pre><h4>4) العمليات Operators</h4><p>حسابية: + - * / // % **. المقارنة: == != &gt; &lt; &gt;= &lt;=. منطقية: and وor وnot.</p><p><code>//</code> قسمة صحيحة، و<code>%</code> باقي القسمة، و<code>**</code> أس.</p><h4>5) الاختصارات و f-string</h4><p><code>x += 1</code> تعني <code>x = x + 1</code>. لا يوجد ++ أو -- في Python. استخدم <code>f"Hello {name}"</code> لإدراج المتغير داخل النص.</p>`,
- enBody:`<h4>1) Variables</h4><p>A variable is a named place that stores a value for later use. Example: <code>age = 20</code>.</p><pre class="code-block">name = "Sara"\nage = 20\nprint(name)\nprint(age)</pre><h4>2) Data Types</h4><ul><li><b>int:</b> whole number, e.g. 7.</li><li><b>float:</b> decimal number, e.g. 3.5.</li><li><b>str:</b> text in quotes, e.g. "Python".</li><li><b>bool:</b> True or False.</li></ul><p>Use <code>type(value)</code> to inspect a value's type.</p><h4>3) Casting and Input</h4><p><code>input()</code> returns text. Convert it with <code>int(input())</code> or <code>float(input())</code> when you need a number.</p><pre class="code-block">age = int(input("Enter age: "))\nprint(age + 1)</pre><h4>4) Operators</h4><p>Arithmetic: + - * / // % **. Comparison: == != &gt; &lt; &gt;= &lt;=. Logical: and, or, not.</p><p><code>//</code> is floor division, <code>%</code> is remainder, and <code>**</code> is exponentiation.</p><h4>5) Shortcuts and f-strings</h4><p><code>x += 1</code> means <code>x = x + 1</code>. Python has no ++ or -- operators. Use <code>f"Hello {name}"</code> to insert variables into text.</p>`},
-{n:"03",ar:"الجمل الشرطية",en:"Conditional Statements",sub:"Lecture 3",
- arBody:`<h4>1) if</h4><p>تُنفّذ كتلة الكود عندما يكون الشرط True. انتبه إلى النقطتين : والمسافة البادئة.</p><pre class="code-block">age = 20\nif age >= 18:\n    print("Adult")\nprint("Done")</pre><h4>2) if / else</h4><p>نستخدم else للمسار البديل عندما يكون الشرط False.</p><pre class="code-block">number = 8\nif number % 2 == 0:\n    print("Even")\nelse:\n    print("Odd")</pre><h4>3) if / elif / else</h4><p>تُفحص الشروط من الأعلى إلى الأسفل، وتُنفّذ أول كتلة شرطها True. لذلك ضع الشرط الأكثر تحديداً أولاً.</p><pre class="code-block">score = 85\nif score >= 90:\n    grade = "A"\nelif score >= 80:\n    grade = "B"\nelse:\n    grade = "F"\nprint(grade)</pre><h4>4) الشروط المركبة</h4><p><code>and</code> يتطلب تحقق الطرفين، و<code>or</code> يكفي تحقق طرف واحد، و<code>not</code> يعكس القيمة المنطقية.</p><h4>5) تذكّر</h4><p>المسافة البادئة تحدد الأسطر التابعة للشرط. لا تخلط بين = للإسناد و== للمقارنة.</p>`,
- enBody:`<h4>1) if</h4><p>Runs a block when its condition is True. Remember the colon and indentation.</p><pre class="code-block">age = 20\nif age >= 18:\n    print("Adult")\nprint("Done")</pre><h4>2) if / else</h4><p>Use else for the alternative path when the condition is False.</p><pre class="code-block">number = 8\nif number % 2 == 0:\n    print("Even")\nelse:\n    print("Odd")</pre><h4>3) if / elif / else</h4><p>Python checks conditions from top to bottom and executes the first True branch. Put stricter conditions first.</p><pre class="code-block">score = 85\nif score >= 90:\n    grade = "A"\nelif score >= 80:\n    grade = "B"\nelse:\n    grade = "F"\nprint(grade)</pre><h4>4) Combined conditions</h4><p><code>and</code> requires both sides to be True, <code>or</code> requires at least one, and <code>not</code> reverses a Boolean value.</p><h4>5) Remember</h4><p>Indentation determines which lines belong to a condition. Do not confuse = assignment with == comparison.</p>`},
-{n:"04",ar:"الحلقات التكرارية",en:"Loops: while and for",sub:"Lecture 4",
- arBody:`<h4>1) لماذا نستخدم الحلقات؟</h4><p>الحلقة تكرر مجموعة أوامر بدلاً من كتابة الأمر مرات عديدة. كل تكرار يسمى Iteration.</p><h4>2) while</h4><p>تستمر طالما الشرط True. تحتاج غالباً إلى قيمة بداية وشرط وتحديث حتى تتوقف.</p><pre class="code-block">count = 1\nwhile count <= 5:\n    print(count)\n    count += 1</pre><p>نسيان التحديث قد يسبب حلقة لا نهائية Infinite Loop.</p><h4>3) for و range()</h4><p>تُستخدم for للتكرار على عناصر أو عدد معروف من المرات. النهاية في range غير مشمولة.</p><pre class="code-block">for i in range(1, 6):\n    print(i)</pre><p>الناتج: 1 إلى 5. أما <code>range(5)</code> فيعطي 0 إلى 4.</p><h4>4) break و continue</h4><p><code>break</code> ينهي الحلقة فوراً. <code>continue</code> يتجاوز بقية التكرار الحالي وينتقل للتكرار التالي.</p><h4>5) أنماط مهمة</h4><p>Counter عدّاد، وAccumulator متغير لتجميع القيم مثل total، وNested loops حلقات متداخلة.</p>`,
- enBody:`<h4>1) Why loops?</h4><p>A loop repeats a block of instructions. Each repetition is an iteration.</p><h4>2) while</h4><p>Repeats while its condition is True. A typical loop needs a starting value, a condition, and an update.</p><pre class="code-block">count = 1\nwhile count <= 5:\n    print(count)\n    count += 1</pre><p>Forgetting the update may create an infinite loop.</p><h4>3) for and range()</h4><p>Use for to iterate over a sequence or a known number of times. The stop value in range is excluded.</p><pre class="code-block">for i in range(1, 6):\n    print(i)</pre><p>Output: 1 through 5. <code>range(5)</code> produces 0 through 4.</p><h4>4) break and continue</h4><p><code>break</code> exits the loop immediately. <code>continue</code> skips the rest of the current iteration.</p><h4>5) Common patterns</h4><p>Counter, accumulator (such as total), and nested loops are common loop patterns.</p>`}
+{
+    title: "Variables, Data Types & Operators",
+
+    description: "المتغيرات وأنواع البيانات والعمليات.",
+
+    points: [
+        "int: عدد صحيح مثل 10",
+        "float: عدد عشري مثل 3.5",
+        "str: نص مثل Python",
+        "bool: True أو False",
+        "type(): معرفة نوع البيانات",
+        "input(): استقبال إدخال المستخدم",
+        "int() و float() لتحويل الأنواع",
+        "العمليات الحسابية + - * / // % **",
+        "المقارنة == != > < >= <=",
+        "العمليات المنطقية and و or و not"
+    ],
+
+    code:
+`name = input("Enter name: ")
+age = int(input("Enter age: "))
+
+print(name)
+print(age + 1)`
+},
+
+{
+    title: "Conditional Statements",
+
+    description: "الجمل الشرطية واتخاذ القرارات.",
+
+    points: [
+        "if: فحص الشرط",
+        "else: الحالة البديلة",
+        "elif: فحص شرط إضافي",
+        "and: تحقق الشرطين",
+        "or: تحقق أحد الشرطين",
+        "not: عكس القيمة",
+        "Nested if: شرط داخل شرط",
+        "الانتباه إلى المسافات البادئة"
+    ],
+
+    code:
+`mark = int(input("Enter mark: "))
+
+if mark >= 90:
+    print("Excellent")
+elif mark >= 50:
+    print("Pass")
+else:
+    print("Fail")`
+},
+
+{
+    title: "Loops: while and for",
+
+    description: "التكرار باستخدام while و for.",
+
+    points: [
+        "for: تكرار المرور على العناصر",
+        "while: تكرار ما دام الشرط صحيحاً",
+        "range(): إنشاء نطاق من الأعداد",
+        "break: إنهاء الحلقة",
+        "continue: تخطي التكرار الحالي",
+        "Nested loops: حلقات متداخلة",
+        "تحديث العداد داخل while",
+        "Sentinel value: قيمة إنهاء الإدخال"
+    ],
+
+    code:
+`for i in range(1, 6):
+    print(i)
+
+count = 1
+
+while count <= 3:
+    print(count)
+    count += 1`
+}
 ];
+
+$("#lessonContainer").innerHTML = lessons.map((lesson, index) => `
+    <article class="card">
+        <h3>${lesson.title}</h3>
+        <p>${lesson.description}</p>
+        <button onclick="showLesson(${index})">
+            عرض الشرح
+        </button>
+    </article>
+`).join("");
+
+window.showLesson = function(index) {
+    const lesson = lessons[index];
+
+    $("#lessonDetails").innerHTML = `
+        <article class="card">
+            <h3>${lesson.title}</h3>
+            <p>${lesson.description}</p>
+
+            <ul>
+                ${lesson.points.map(p => `<li>${p}</li>`).join("")}
+            </ul>
+
+            <h4>مثال تطبيقي</h4>
+            <pre class="code">${lesson.code}</pre>
+        </article>
+    `;
+
+    $("#lessonDetails").scrollIntoView({
+        behavior: "smooth"
+    });
+};
+
+
+// ===============================
+// 2. أسئلة MCQ
+// ===============================
+
+const mcq = [
+["ما نوع القيمة 15؟", ["str","int","float","bool"], 1, "15 عدد صحيح."],
+["ما نوع القيمة 'Python'؟", ["int","float","str","bool"], 2, "النص نوعه str."],
+["ما وظيفة input()؟", ["طباعة","استقبال إدخال","حلقة","مقارنة"], 1, "تستقبل إدخال المستخدم."],
+["ما ناتج 7 // 2؟", ["3.5","3","1","4"], 1, "قسمة صحيحة."],
+["ما ناتج 7 % 2؟", ["3","2","1","0"], 2, "باقي القسمة هو 1."],
+["أي عامل للمقارنة بالمساواة؟", ["=","==","!=","<"], 1, "== للمقارنة."],
+["أي نوع للقيم True و False؟", ["int","str","bool","float"], 2, "bool نوع منطقي."],
+["ما ناتج 2 ** 3؟", ["5","6","8","9"], 2, "2 أس 3 يساوي 8."],
+["أي عامل يتطلب تحقق الشرطين؟", ["or","and","not","%"], 1, "and يتطلب الشرطين."],
+["ما ناتج not True؟", ["True","False","None","1"], 1, "not تعكس القيمة."],
+["متى تنفذ if؟", ["دائماً","إذا تحقق الشرط","إذا فشل","بعد الحلقة"], 1, "عندما يكون الشرط True."],
+["ما وظيفة else؟", ["شرط إضافي","الحالة البديلة","حلقة","تحويل"], 1, "تنفذ عند عدم تحقق الشرط."],
+["ما وظيفة elif؟", ["فحص شرط إضافي","تعريف متغير","طباعة","إنهاء"], 0, "تفحص حالة أخرى."],
+["ما ناتج 5 > 3؟", ["5","3","True","False"], 2, "خمسة أكبر من ثلاثة."],
+["كيف نفحص العمر 18 أو أكثر؟", ["age=18","age>=18","age<18","age!=18"], 1, ">= تعني أكبر من أو يساوي."],
+["ما المقصود بـ nested if؟", ["if داخل if","حلقة داخل حلقة","نص","دالة"], 0, "شرط داخل شرط."],
+["أي قيمة falsy؟", ["'Hi'","10","0","[1]"], 2, "الصفر falsy."],
+["ما وظيفة for؟", ["تحويل","التكرار","المقارنة","الإسناد"], 1, "تكرر على العناصر أو النطاق."],
+["range(4) ينتج؟", ["1,2,3,4","0,1,2,3","0,1,2,3,4","4"], 1, "النهاية غير مشمولة."],
+["كم مرة تتكرر range(1,5)؟", ["4","5","3","6"], 0, "القيم 1 إلى 4."],
+["ما وظيفة while؟", ["التكرار بشرط","تعريف نص","إيقاف","تحويل"], 0, "تستمر ما دام الشرط True."],
+["ما وظيفة break؟", ["تخطي دورة","إنهاء الحلقة","إعادة تشغيل","طباعة"], 1, "يخرج من الحلقة."],
+["ما وظيفة continue؟", ["إنهاء البرنامج","تخطي التكرار الحالي","إنهاء الحلقة","تعريف"], 1, "ينتقل للتكرار التالي."],
+["ما خطر عدم تحديث عداد while؟", ["حلقة لانهائية","تحويل نوع","لا شيء","طباعة"], 0, "قد يستمر الشرط صحيحاً."],
+["أي صيغة تزيد x واحداً؟", ["x=1","x+=1","x==1","x%1"], 1, "تعادل x=x+1."],
+["ما ناتج len('cat')؟", ["2","3","4","خطأ"], 1, "ثلاثة أحرف."],
+["ما وظيفة print()؟", ["إدخال","عرض الناتج","تحويل","تكرار"], 1, "تعرض المعلومات."],
+["ما ناتج bool(0)؟", ["True","False","0","None"], 1, "الصفر falsy."],
+["ما ناتج bool('Hi')؟", ["False","True","0","خطأ"], 1, "النص غير الفارغ truthy."],
+["أي عامل يعني أو؟", ["and","or","not","in"], 1, "or يكفي تحقق أحد الشرطين."],
+["ما ناتج 10 / 2؟", ["5","5.0","2","10"], 1, "القسمة العادية تعيد float."],
+["ما ناتج 10 - 3 * 2؟", ["14","4","7","20"], 1, "الضرب أولاً."],
+["كيف نكتب تعليقاً؟", ["//","<!--","#","**"], 2, "يبدأ التعليق بـ #."],
+["ما فائدة f-string؟", ["إدراج متغيرات بالنص","حلقة","شرط","قراءة ملف"], 0, "تدرج المتغير داخل النص."],
+["ما ناتج '2' + '3'؟", ["5","23","خطأ","1"], 1, "دمج نصوص."],
+["ماذا نستخدم لتحويل input إلى رقم؟", ["str()","int() أو float()","print()","break"], 1, "input يعيد نصاً."],
+["أي حلقة لعدد مرات معلوم غالباً؟", ["for","while فقط","if","else"], 0, "for مع range."],
+["ما sentinel value؟", ["قيمة إنهاء","نوع بيانات","عامل","حلقة"], 0, "قيمة خاصة لإنهاء الإدخال."],
+["range(2,10,2) ينتج؟", ["2,4,6,8","2,4,6,8,10","0,2,4,6","2,10"], 0, "يتوقف قبل 10."],
+["nested loops تعني؟", ["حلقة داخل حلقة","شرط داخل شرط","متغيرين","دالتين"], 0, "حلقة داخل حلقة أخرى."],
+["أي عامل يعكس الشرط؟", ["and","or","not","=="], 2, "not تعكس القيمة."],
+["نسيان : بعد if يسبب؟", ["SyntaxError","لا مشكلة","حلقة","None"], 0, "النقطتان ضروريتان."],
+["أي اسم متغير صحيح؟", ["2name","user_name","user-name","class"], 1, "لا يبدأ المتغير برقم."],
+["ما ناتج 3 == 3؟", ["3","True","False","None"], 1, "القيمتان متساويتان."],
+["ما ناتج 4 != 4؟", ["True","False","4","خطأ"], 1, "4 لا تختلف عن 4."],
+["range(3,0,-1) ينتج؟", ["3,2,1","3,2,1,0","0,1,2","2,1,0"], 0, "يتوقف قبل الصفر."],
+["ما ناتج 2 * 3 + 1؟", ["7","9","8","6"], 0, "الضرب أولاً."],
+["ما ناتج int('8') + 2؟", ["82","10","8","خطأ"], 1, "نحول النص إلى عدد."],
+["ما وظيفة type(x)؟", ["معرفة النوع","طباعة","تكرار","تحويل"], 0, "تعرف نوع البيانات."],
+["ما ناتج 6 >= 6؟", ["True","False","6","None"], 0, ">= تشمل المساواة."],
+["أي أمر يخرج من الحلقة؟", ["continue","break","input","print"], 1, "break ينهي الحلقة."]
+];
+
+let currentQuestion = 0;
+let score = 0;
+let locked = false;
+
+function showQuestion() {
+    const q = mcq[currentQuestion];
+
+    $("#quizInfo").textContent =
+        `السؤال ${currentQuestion + 1} من ${mcq.length} | النتيجة: ${score}`;
+
+    $("#progressBar").style.width =
+        ((currentQuestion + 1) / mcq.length * 100) + "%";
+
+    $("#question").textContent = q[0];
+    $("#feedback").textContent = "";
+    $("#nextBtn").disabled = true;
+    locked = false;
+
+    $("#answers").innerHTML = q[1].map((answer, i) => `
+        <button class="answer" data-index="${i}">
+            ${"ABCD"[i]}. ${answer}
+        </button>
+    `).join("");
+
+    document.querySelectorAll(".answer").forEach(button => {
+        button.onclick = function() {
+            if (locked) return;
+            locked = true;
+
+            const selected = Number(this.dataset.index);
+
+            if (selected === q[2]) score++;
+
+            document.querySelectorAll(".answer").forEach((btn, i) => {
+                btn.disabled = true;
+
+                if (i === q[2]) btn.classList.add("correct");
+                if (i === selected && selected !== q[2]) {
+                    btn.classList.add("wrong");
+                }
+            });
+
+            $("#feedback").textContent =
+                (selected === q[2] ? "إجابة صحيحة! " : "إجابة غير صحيحة. ")
+                + q[3];
+
+            $("#quizInfo").textContent =
+                `السؤال ${currentQuestion + 1} من ${mcq.length} | النتيجة: ${score}`;
+
+            $("#nextBtn").disabled = false;
+        };
+    });
+}
+
+$("#nextBtn").onclick = function() {
+    if (currentQuestion < mcq.length - 1) {
+        currentQuestion++;
+        showQuestion();
+    } else {
+        $("#question").textContent =
+            `انتهى الاختبار! نتيجتك ${score} من ${mcq.length}`;
+
+        $("#answers").innerHTML = "";
+        $("#feedback").textContent =
+            "راجع إجاباتك وحاول مرة أخرى لتحسين نتيجتك.";
+
+        $("#nextBtn").disabled = true;
+    }
+};
+
+$("#restartBtn").onclick = function() {
+    currentQuestion = 0;
+    score = 0;
+    showQuestion();
+};
+
+showQuestion();
+
+
+// ===============================
+// 3. البرامج التطبيقية
+// ===============================
 
 const programs = [
-{title:"جمع عددين | Add two numbers",desc:"الإدخال والتحويل إلى عدد صحيح.",code:`a = int(input("First number: "))\nb = int(input("Second number: "))\nresult = a + b\nprint("Sum =", result)`,out:"First number: 5\nSecond number: 3\nSum = 8",exAr:"نستقبل العددين باستخدام input، ثم نحوّلهما إلى int حتى تكون العملية جمعاً حسابياً. نخزن المجموع في result ثم نطبعه.",exEn:"Read two values, convert them to integers, add them, store the result, and print it."},
-{title:"زوجي أم فردي | Even or odd",desc:"استخدام if و else مع باقي القسمة.",code:`number = 7\nif number % 2 == 0:\n    print("Even")\nelse:\n    print("Odd")`,out:"Odd",exAr:"إذا كان باقي قسمة العدد على 2 يساوي صفراً فهو زوجي، وإلا فهو فردي.",exEn:"If the remainder after division by 2 is zero, the number is even; otherwise it is odd."},
-{title:"أكبر عددين | Largest of two",desc:"المقارنة بين قيمتين.",code:`a = 12\nb = 20\nif a > b:\n    print(a)\nelse:\n    print(b)`,out:"20",exAr:"يقارن البرنامج a مع b. بما أن 12 ليست أكبر من 20، ينفذ else ويطبع 20.",exEn:"The condition is False because 12 is not greater than 20, so the else branch prints 20."},
-{title:"تقدير الطالب | Grade calculator",desc:"سلسلة شروط if / elif / else.",code:`score = 85\nif score >= 90:\n    grade = "A"\nelif score >= 80:\n    grade = "B"\nelif score >= 70:\n    grade = "C"\nelse:\n    grade = "F"\nprint(grade)`,out:"B",exAr:"يفحص الشروط بالتسلسل. 85 لا تحقق 90 لكنها تحقق 80، لذلك تكون الدرجة B.",exEn:"Conditions are checked top to bottom. 85 fails the 90 test but passes the 80 test, so the grade is B."},
-{title:"آلة حاسبة بسيطة | Simple calculator",desc:"اختيار العملية باستخدام الشروط.",code:`a = 10\nb = 5\nop = "*"\nif op == "+":\n    print(a + b)\nelif op == "-":\n    print(a - b)\nelif op == "*":\n    print(a * b)\nelif op == "/":\n    print(a / b)\nelse:\n    print("Invalid operator")`,out:"50",exAr:"تُخزن العملية في op. بما أن قيمتها * ينفذ فرع الضرب ويطبع 50.",exEn:"The operator is *, so the multiplication branch runs and prints 50."},
-{title:"مجموع الأعداد من 1 إلى n | Sum to n",desc:"استخدام for مع متغير تجميعي.",code:`n = 5\ntotal = 0\nfor i in range(1, n + 1):\n    total += i\nprint(total)`,out:"15",exAr:"يبدأ total بصفر. في كل دورة نضيف i إلى المجموع: 1 ثم 2 ثم 3 ثم 4 ثم 5، فيكون الناتج 15.",exEn:"total starts at zero. Each loop adds i, from 1 through 5, giving 15."},
-{title:"جدول الضرب | Multiplication table",desc:"حلقة for مع range.",code:`number = 3\nfor i in range(1, 6):\n    print(number, "x", i, "=", number * i)`,out:"3 x 1 = 3\n3 x 2 = 6\n3 x 3 = 9\n3 x 4 = 12\n3 x 5 = 15",exAr:"تتكرر الحلقة خمس مرات. تتغير i من 1 إلى 5، وفي كل مرة نطبع حاصل ضرب 3 في i.",exEn:"The loop runs five times. i goes from 1 to 5 and each iteration prints 3 multiplied by i."},
-{title:"العد التنازلي | Countdown",desc:"حلقة while وتحديث العداد.",code:`count = 5\nwhile count > 0:\n    print(count)\n    count -= 1\nprint("Go!")`,out:"5\n4\n3\n2\n1\nGo!",exAr:"تستمر while ما دام count أكبر من صفر. ننقصه واحداً بعد كل طباعة حتى يصبح صفراً.",exEn:"The while loop continues while count is greater than zero. It decreases by one after each print."},
-{title:"المضروب Factorial",desc:"تجميع نواتج الضرب داخل حلقة.",code:`n = 5\nfact = 1\nfor i in range(1, n + 1):\n    fact *= i\nprint(fact)`,out:"120",exAr:"نبدأ fact بواحد، ثم نضربه بالأعداد من 1 إلى 5: 1×2×3×4×5 = 120.",exEn:"Start fact at 1 and multiply by each integer from 1 to 5: the result is 120."},
-{title:"مجموع أرقام العدد | Sum of digits",desc:"استخدام % و // داخل while.",code:`number = 1234\ntotal = 0\nwhile number > 0:\n    digit = number % 10\n    total += digit\n    number //= 10\nprint(total)`,out:"10",exAr:"% 10 يستخرج الرقم الأخير، و// 10 يحذف الرقم الأخير. نجمع 4 ثم 3 ثم 2 ثم 1 فيكون المجموع 10.",exEn:"% 10 extracts the last digit and // 10 removes it. Add 4, 3, 2, and 1 to get 10."}
+["طباعة رسالة","variables",'print("Hello Python")',"print تعرض النص."],
+["جمع عددين","variables",'a = 5\\nb = 7\\nprint(a + b)',"نجمع العددين."],
+["إدخال الاسم","variables",'name = input("Name: ")\\nprint("Welcome", name)',"استقبال اسم المستخدم."],
+["حساب العمر","variables",'age = int(input("Age: "))\\nprint(age + 1)',"تحويل الإدخال إلى int."],
+["تحويل الحرارة","variables",'c = float(input())\\nprint(c * 9/5 + 32)',"تحويل Celsius إلى Fahrenheit."],
+["مساحة مستطيل","variables",'l = float(input())\\nw = float(input())\\nprint(l * w)',"الطول في العرض."],
+["حساب المتوسط","variables",'a = 10\\nb = 20\\nprint((a+b)/2)',"جمع القيم وقسمتها على عددها."],
+["التحويل إلى نص","variables",'number = 25\\ntext = str(number)\\nprint(type(text))',"تحويل العدد إلى str."],
+["زوجي أو فردي","conditions",'n = int(input())\\nif n % 2 == 0:\\n    print("Even")\\nelse:\\n    print("Odd")',"فحص باقي القسمة."],
+["نجاح أو رسوب","conditions",'mark = int(input())\\nif mark >= 50:\\n    print("Pass")\\nelse:\\n    print("Fail")',"فحص الدرجة."],
+["تقدير الدرجة","conditions",'m = int(input())\\nif m >= 90: print("A")\\nelif m >= 80: print("B")\\nelif m >= 70: print("C")\\nelse: print("Other")',"فحص عدة حالات."],
+["أكبر عددين","conditions",'a = int(input())\\nb = int(input())\\nif a > b: print(a)\\nelse: print(b)',"المقارنة بين عددين."],
+["فحص العمر","conditions",'age = int(input())\\nif age >= 13 and age <= 19:\\n    print("Teen")\\nelse:\\n    print("Not teen")',"استخدام and."],
+["آلة حاسبة","conditions",'a = float(input())\\nop = input()\\nb = float(input())\\nif op == "+": print(a+b)\\nelif op == "-": print(a-b)\\nelif op == "*": print(a*b)\\nelif op == "/" and b != 0: print(a/b)\\nelse: print("Invalid")',"اختيار العملية."],
+["الأعداد من 1 إلى 5","loops",'for i in range(1,6):\\n    print(i)',"حلقة for."],
+["مجموع 1 إلى n","loops",'n = int(input())\\ntotal = 0\\nfor i in range(1,n+1):\\n    total += i\\nprint(total)',"حساب المجموع."],
+["جدول الضرب","loops",'n = int(input())\\nfor i in range(1,11):\\n    print(n, "x", i, "=", n*i)',"جدول ضرب العدد."],
+["العد التنازلي","loops",'for i in range(5,0,-1):\\n    print(i)',"استخدام خطوة سالبة."],
+["مجموع while","loops",'i = 1\\ntotal = 0\\nwhile i <= 5:\\n    total += i\\n    i += 1\\nprint(total)',"تحديث عداد while."],
+["إدخال حتى الصفر","loops",'total = 0\\nn = int(input())\\nwhile n != 0:\\n    total += n\\n    n = int(input())\\nprint(total)',"الصفر قيمة إنهاء."],
+["تجاوز الزوجي","loops",'for i in range(1,11):\\n    if i % 2 == 0: continue\\n    print(i)',"استخدام continue."],
+["إيقاف عند 7","loops",'for i in range(1,11):\\n    if i == 7: break\\n    print(i)',"استخدام break."],
+["المضروب","loops",'n = int(input())\\nfact = 1\\nfor i in range(1,n+1):\\n    fact *= i\\nprint(fact)',"حساب factorial."],
+["مربع نجوم","loops",'for r in range(4):\\n    for c in range(4):\\n        print("*",end=" ")\\n    print()', "حلقات متداخلة."],
+["متوسط الدرجات","loops",'n = int(input())\\ntotal = 0\\nfor i in range(n):\\n    total += float(input())\\nif n > 0: print(total/n)',"حساب متوسط مجموعة درجات."]
 ];
 
-const questions = [
-{ar:"ما نوع القيمة 3.14؟",en:"What is the data type of 3.14?",opts:["int","float","str","bool"],ans:1,whyAr:"لأنها قيمة عددية تحتوي على فاصلة عشرية، فنوعها float.",whyEn:"It is a numeric value with a decimal part, so its type is float."},
-{ar:"ما ناتج 17 % 5؟",en:"What is the result of 17 % 5?",opts:["2","3","3.4","5"],ans:0,whyAr:"% تعطي باقي القسمة، وباقي 17 على 5 هو 2.",whyEn:"% returns the remainder. The remainder of 17 divided by 5 is 2."},
-{ar:"أي دالة تستقبل إدخال المستخدم؟",en:"Which function receives user input?",opts:["print()","type()","input()","range()"],ans:2,whyAr:"input() تقرأ ما يدخله المستخدم وتعيده كنص.",whyEn:"input() reads user input and returns it as a string."},
-{ar:"ما الرمز المستخدم للمقارنة بالمساواة؟",en:"Which operator checks equality?",opts:["=","==","!=","+="],ans:1,whyAr:"== للمقارنة، أما = فتستخدم لإسناد قيمة إلى متغير.",whyEn:"== compares values; = assigns a value to a variable."},
-{ar:"متى ينفذ else؟",en:"When does else execute?",opts:["دائماً","عندما يكون شرط if False","قبل if","مرتين"],ans:1,whyAr:"ينفذ else عندما لا يتحقق شرط if أو أي فرع سابق.",whyEn:"else runs when the if condition and any earlier branches are not satisfied."},
-{ar:"أي عبارة تتجاوز التكرار الحالي؟",en:"Which statement skips the current iteration?",opts:["break","stop","continue","pass"],ans:2,whyAr:"continue تتجاوز بقية أوامر الدورة الحالية وتنتقل للتالية.",whyEn:"continue skips the rest of the current iteration and moves to the next one."},
-{ar:"ما قيم range(3)؟",en:"What values does range(3) produce?",opts:["1,2,3","0,1,2","0,1,2,3","3 فقط"],ans:1,whyAr:"تبدأ range بصفـر افتراضياً ولا تشمل قيمة النهاية 3.",whyEn:"range starts at zero by default and excludes the stop value 3."},
-{ar:"ما الذي قد يسبب Infinite Loop في while؟",en:"What can cause an infinite while loop?",opts:["تحديث العداد","نسيان تحديث المتغير","استخدام print","استخدام int"],ans:1,whyAr:"إذا بقي الشرط True ولم تتغير قيمة تؤثر فيه فقد لا تنتهي الحلقة.",whyEn:"If the condition stays True because the relevant value is never updated, the loop may not end."},
-{ar:"ما ناتج 2 ** 3؟",en:"What is the result of 2 ** 3?",opts:["5","6","8","9"],ans:2,whyAr:"** تعني الأس، أي 2 × 2 × 2 = 8.",whyEn:"** means exponentiation: 2 × 2 × 2 = 8."},
-{ar:"أي نوع يمثل True و False؟",en:"Which type represents True and False?",opts:["str","float","bool","int"],ans:2,whyAr:"النوع المنطقي Boolean يسمى bool.",whyEn:"The Boolean data type is named bool."}
-];
+function showPrograms() {
+    const search = $("#programSearch").value.toLowerCase();
+    const category = $("#programCategory").value;
 
-const bugs = [
-{title:"نسيان النقطتين | Missing colon",code:`if age >= 18\n    print("Adult")`,fix:`if age >= 18:\n    print("Adult")`,whyAr:"يجب وضع : في نهاية سطر if قبل الكتلة التابعة له.",whyEn:"A colon is required at the end of the if header."},
-{title:"مسافة بادئة خاطئة | Wrong indentation",code:`if x > 0:\nprint("Positive")`,fix:`if x > 0:\n    print("Positive")`,whyAr:"السطر التابع لـ if يجب أن يكون مزاحاً إلى الداخل.",whyEn:"The statement belonging to if must be indented."},
-{title:"جمع نص مع عدد | String + integer",code:`age = 20\nprint("Age: " + age)`,fix:`age = 20\nprint("Age: " + str(age))\n# Or:\nprint(f"Age: {age}")`,whyAr:"لا يمكن دمج str مع int باستخدام + مباشرة. حوّل العدد إلى نص أو استخدم f-string.",whyEn:"You cannot concatenate a str and int directly. Convert the integer or use an f-string."},
-{title:"الإدخال لم يتحول إلى رقم | Input not converted",code:`a = input("A: ")\nb = input("B: ")\nprint(a + b)`,fix:`a = int(input("A: "))\nb = int(input("B: "))\nprint(a + b)`,whyAr:"input تعيد نصاً؛ لذلك قد تكون النتيجة دمج النصين بدلاً من جمعهما حسابياً.",whyEn:"input returns strings, so + may concatenate instead of adding numerically."},
-{title:"إسناد بدل مقارنة | Assignment instead of comparison",code:`if x = 5:\n    print("Five")`,fix:`if x == 5:\n    print("Five")`,whyAr:"داخل الشرط نستخدم == للمقارنة، وليس = للإسناد.",whyEn:"Use == for comparison in a condition, not = for assignment."},
-{title:"حلقة لا نهائية | Infinite loop",code:`count = 1\nwhile count <= 5:\n    print(count)`,fix:`count = 1\nwhile count <= 5:\n    print(count)\n    count += 1`,whyAr:"قيمة count لا تتغير، لذلك يبقى الشرط صحيحاً. أضف تحديثاً داخل الحلقة.",whyEn:"count never changes, so the condition remains true. Add an update inside the loop."},
-{title:"خطأ حدود range | range boundary",code:`for i in range(1, 5):\n    print(i)\n# Expected: 1 to 5`,fix:`for i in range(1, 6):\n    print(i)`,whyAr:"قيمة النهاية في range غير مشمولة؛ لذلك range(1, 5) تطبع 1 إلى 4 فقط.",whyEn:"The stop value is excluded. range(1, 5) prints 1 through 4 only."},
-{title:"قسمة على صفر | Division by zero",code:`a = 10\nb = 0\nprint(a / b)`,fix:`a = 10\nb = 0\nif b != 0:\n    print(a / b)\nelse:\n    print("Cannot divide by zero")`,whyAr:"القسمة على صفر تسبب ZeroDivisionError. افحص المقسوم عليه أولاً.",whyEn:"Dividing by zero raises ZeroDivisionError. Check the divisor first."}
-];
+    const filtered = programs.filter(p => {
+        const matchesText = (p[0] + p[3]).toLowerCase().includes(search);
+        const matchesCategory = category === "all" || p[1] === category;
+        return matchesText && matchesCategory;
+    });
+
+    $("#programContainer").innerHTML = filtered.map(p => `
+        <article class="card">
+            <h3>${p[0]}</h3>
+            <p>${p[3]}</p>
+
+            <details>
+                <summary>عرض الكود والشرح</summary>
+                <pre class="code">${p[2]}</pre>
+                <p>${p[3]}</p>
+            </details>
+        </article>
+    `).join("");
+}
+
+$("#programSearch").addEventListener("input", showPrograms);
+$("#programCategory").addEventListener("change", showPrograms);
+
+showPrograms();
+
+
+// ===============================
+// 4. توقع ناتج البرامج
+// ===============================
 
 const outputs = [
-{title:"تتبّع range",code:`for i in range(2, 6):\n    print(i, end=" ")`,out:"2 3 4 5",whyAr:"تبدأ من 2 وتتوقف قبل 6؛ لذلك تظهر أربعة أعداد.",whyEn:"It starts at 2 and stops before 6, so four numbers are printed."},
-{title:"تتبّع while",code:`x = 1\nwhile x < 20:\n    x *= 2\nprint(x)`,out:"32",whyAr:"القيم: 1 ثم 2 ثم 4 ثم 8 ثم 16 ثم 32. عند 32 يصبح الشرط False.",whyEn:"Values are 1, 2, 4, 8, 16, then 32. At 32 the condition becomes False."},
-{title:"تأثير continue",code:`for i in range(1, 6):\n    if i == 3:\n        continue\n    print(i, end=" ")`,out:"1 2 4 5",whyAr:"عندما تصبح i تساوي 3 يتجاوز continue أمر الطباعة في تلك الدورة.",whyEn:"When i equals 3, continue skips the print statement for that iteration."},
-{title:"تأثير break",code:`for i in range(1, 6):\n    if i == 3:\n        break\n    print(i, end=" ")`,out:"1 2",whyAr:"عند i = 3 تنتهي الحلقة مباشرة قبل تنفيذ print.",whyEn:"At i = 3, the loop exits immediately before print runs."},
-{title:"Accumulator",code:`total = 0\nfor i in range(1, 4):\n    total += i\nprint(total)`,out:"6",whyAr:"المجموع يتغير: 0 ثم 1 ثم 3 ثم 6.",whyEn:"The total changes from 0 to 1, then 3, then 6."},
-{title:"قيمة المتغير",code:`x = 10\nx += 5\nx *= 2\nprint(x)`,out:"30",whyAr:"بعد x += 5 تصبح 15، ثم تضرب في 2 فتكون 30.",whyEn:"x becomes 15 after += 5, then 30 after multiplying by 2."},
-{title:"شرط if",code:`score = 75\nif score >= 80:\n    print("B")\nelif score >= 70:\n    print("C")\nelse:\n    print("F")`,out:"C",whyAr:"75 لا تحقق 80 لكنها تحقق 70، لذلك يطبع C.",whyEn:"75 is below 80 but at least 70, so C is printed."},
-{title:"تكرار متداخل",code:`for i in range(2):\n    for j in range(2):\n        print("*", end="")\n    print()`,out:"**\n**",whyAr:"الحلقة الخارجية تعمل مرتين، والداخلية تطبع نجمتين في كل مرة.",whyEn:"The outer loop runs twice; the inner loop prints two stars each time."}
+['x = 4\\nprint(x + 3)',"7","نجمع 4 و3."],
+['print(9 // 2)',"4","قسمة صحيحة."],
+['print(9 % 2)',"1","باقي القسمة."],
+['print(2 ** 4)',"16","الأس."],
+['name = "Ali"\\nprint("Hi", name)',"Hi Ali","طباعة الاسم."],
+['x = 5\\nx += 2\\nprint(x)',"7","زيادة المتغير."],
+['print(3 > 8)',"False","المقارنة."],
+['print(True and False)',"False","and."],
+['print(not False)',"True","عكس القيمة."],
+['print(len("Python"))',"6","عدد الأحرف."],
+['for i in range(3):\\n    print(i)',"0\\n1\\n2","range تبدأ من صفر."],
+['for i in range(2,5):\\n    print(i)',"2\\n3\\n4","الرقم 5 غير مشمول."],
+['x=1\\nwhile x<4:\\n    print(x)\\n    x+=1',"1\\n2\\n3","تحديث العداد."],
+['for i in range(1,6,2):\\n    print(i)',"1\\n3\\n5","خطوة 2."],
+['for i in range(5):\\n    if i==3: break\\n    print(i)',"0\\n1\\n2","break."],
+['for i in range(5):\\n    if i==2: continue\\n    print(i)',"0\\n1\\n3\\n4","continue."],
+['x=10\\nif x>5: print("A")\\nelse: print("B")',"A","الشرط صحيح."],
+['mark=45\\nif mark>=50: print("Pass")\\nelse: print("Fail")',"Fail","الدرجة أقل من 50."],
+['print("2"+"3")',"23","دمج النصوص."],
+['print(int("8")+2)',"10","تحويل إلى عدد."],
+['total=0\\nfor n in [1,2,3]: total+=n\\nprint(total)',"6","المجموع."],
+['x=3\\nif x>1 and x<5: print("Yes")',"Yes","الشرطان صحيحان."],
+['print(bool(""))',"False","النص الفارغ."],
+['print(bool("0"))',"True","النص غير الفارغ."],
+['for i in range(3,0,-1): print(i)',"3\\n2\\n1","العد التنازلي."],
+['x=2\\nwhile x<=6:\\n    print(x)\\n    x+=2',"2\\n4\\n6","زيادة اثنين."],
+['for i in range(2):\\n    for j in range(2):\\n        print(i,j)',"0 0\\n0 1\\n1 0\\n1 1","حلقتان متداخلتان."],
+['print(7/2)',"3.5","القسمة العادية."],
+['print(7//2)',"3","القسمة الصحيحة."],
+['x=5\\nprint(x==5,x!=5)',"True False","المساواة وعدم المساواة."]
 ];
 
-let lang="ar";
-let selected={};
-let submitted=false;
-const $=s=>document.querySelector(s);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function t(k){return data[lang][k]||k}
-function renderLessons(){
- $("#lessonsList").innerHTML=lessons.map((l,i)=>`<details class="lesson-card" ${i===0?'open':''}><summary><div><strong>${l.n} · ${lang==="ar"?l.ar:l.en}</strong><small>${l.sub}</small></div><span class="tag">${lang==="ar"?"افتح الشرح":"OPEN LESSON"}</span></summary><div class="lesson-content">${lang==="ar"?l.arBody:l.enBody}</div></details>`).join("");
+const debugExercises = [
+['if age >= 18\\n    print("Adult")','if age >= 18:\\n    print("Adult")',"ناقص النقطتان."],
+['age=input("Age: ")\\nprint(age+1)','age=int(input("Age: "))\\nprint(age+1)',"input يعيد نصاً."],
+['if x>0:\\nprint("Positive")','if x>0:\\n    print("Positive")',"المسافة البادئة."],
+['if x=10:\\n    print("Ten")','if x==10:\\n    print("Ten")',"استخدام == للمقارنة."],
+['a=10\\nb=0\\nprint(a/b)','a=10\\nb=0\\nif b!=0: print(a/b)\\nelse: print("Cannot divide")',"القسمة على صفر."],
+['i=1\\nwhile i<=5:\\n    print(i)','i=1\\nwhile i<=5:\\n    print(i)\\n    i+=1',"تحديث العداد."],
+['for i in range(1,5):\\n    print(i)\\n# المطلوب 1 إلى 5','for i in range(1,6):\\n    print(i)',"range لا تشمل النهاية."],
+['2name="Sara"\\nprint(2name)','name2="Sara"\\nprint(name2)',"اسم المتغير لا يبدأ برقم."],
+['price="12.5"\\nprint(price*2)','price=float("12.5")\\nprint(price*2)',"تحويل النص إلى float."],
+['if mark>50: print("Pass")\\nelse: print("Fail")','if mark>=50: print("Pass")\\nelse: print("Fail")',"استخدام >=."],
+['if age>=13 or age<=19: print("Teen")','if age>=13 and age<=19: print("Teen")',"استخدام and."],
+['a=input()\\nb=input()\\nprint(a+b)','a=int(input())\\nb=int(input())\\nprint(a+b)',"تحويل الإدخال إلى أعداد."],
+['print(2^3)','print(2**3)',"عامل الأس هو **."],
+['print(Hello)','print("Hello")',"النص يحتاج اقتباساً."],
+['print("Welcome"','print("Welcome")',"قوس الإغلاق ناقص."],
+['n=10\\nwhile n>0:\\n    print(n)\\n    n=n+1','n=10\\nwhile n>0:\\n    print(n)\\n    n=n-1',"يجب إنقاص العداد."],
+['answer=input()\\nif answer="yes": print("OK")','answer=input()\\nif answer=="yes": print("OK")',"المقارنة باستخدام ==."],
+['total=20\\ncount=0\\nprint(total/count)','total=20\\ncount=4\\nif count>0: print(total/count)',"تجنب القسمة على صفر."],
+['if x>5\\n print("Big")','if x>5:\\n    print("Big")',"النقطتان والإزاحة."],
+['x="5"\\nprint(x-1)','x=int("5")\\nprint(x-1)',"تحويل النص إلى int."]
+];
+
+function buildExercises(data, container, debug) {
+    $(container).innerHTML = data.map((item, index) => `
+        <article class="exercise">
+            <h3>${index + 1}. ${debug ? "اكتشف الخطأ وصححه" : "توقع الناتج"}</h3>
+
+            <pre class="code">${item[0]}</pre>
+
+            <button class="reveal">
+                إظهار ${debug ? "التصحيح" : "الناتج"}
+            </button>
+
+            <div class="solution">
+                <strong>${debug ? "الكود الصحيح:" : "الناتج:"}</strong>
+                <pre class="code">${item[1]}</pre>
+                <p>${item[2]}</p>
+            </div>
+        </article>
+    `).join("");
+
+    document.querySelectorAll(container + " .reveal").forEach(button => {
+        button.onclick = function() {
+            const solution = this.nextElementSibling;
+            solution.classList.toggle("show");
+
+            this.textContent = solution.classList.contains("show")
+                ? "إخفاء الحل"
+                : "إظهار الحل";
+        };
+    });
 }
-function renderPrograms(){
- $("#programsList").innerHTML=programs.map((p,i)=>`<article class="program-card" data-search="${esc((p.title+" "+p.desc+p.code).toLowerCase())}"><h4>${i+1}. ${p.title}</h4><p>${p.desc}</p><pre class="code-block">${esc(p.code)}</pre><div class="explain">${lang==="ar"?p.exAr:p.exEn}</div><div class="card-actions"><button class="small-btn reveal-toggle" data-target="prog${i}">${t("showOutput")}</button></div><div class="reveal" id="prog${i}"><div class="output-box">${esc(p.out)}</div></div></article>`).join("");
- bindReveal();
-}
-function renderQuiz(){
- selected={};submitted=false;$("#quizResult").classList.add("hidden");
- $("#quizList").innerHTML=questions.map((q,i)=>`<article class="question-card" data-q="${i}"><h4>${i+1}. ${lang==="ar"?q.ar:q.en}</h4><div class="options">${q.opts.map((o,j)=>`<button class="option" data-q="${i}" data-a="${j}">${String.fromCharCode(65+j)}. ${o}</button>`).join("")}</div><div class="feedback" id="feed${i}"></div></article>`).join("");
- document.querySelectorAll(".option").forEach(b=>b.addEventListener("click",()=>{if(submitted)return;let q=+b.dataset.q,a=+b.dataset.a;selected[q]=a;document.querySelectorAll(`.option[data-q="${q}"]`).forEach(x=>x.classList.toggle("selected",x===b));updateProgress()}));
- updateProgress();
-}
-function updateProgress(){let n=Object.keys(selected).length;$("#quizProgress").textContent=`${n} / ${questions.length} ${lang==="ar"?"تمت الإجابة":"answered"}`;$("#progressFill").style.width=(n/questions.length*100)+"%"}
-function submitQuiz(){
- if(Object.keys(selected).length!==questions.length){$("#quizResult").textContent=t("allAnswered");$("#quizResult").classList.remove("hidden");return}
- submitted=true;let score=0;
- questions.forEach((q,i)=>{let chosen=selected[i],correct=chosen===q.ans;if(correct)score++;document.querySelectorAll(`.option[data-q="${i}"]`).forEach(b=>{let a=+b.dataset.a;if(a===q.ans)b.classList.add("correct");else if(a===chosen)b.classList.add("wrong")});$("#feed"+i).textContent=(correct?t("correct"):t("incorrect"))+" — "+(lang==="ar"?q.whyAr:q.whyEn)});
- $("#quizResult").innerHTML=`<strong>${t("score")}: ${score} ${t("of")} ${questions.length}</strong><p>${score===questions.length?(lang==="ar"?"ممتاز! إجاباتك كلها صحيحة.":"Excellent! All answers are correct."):lang==="ar"?"راجع التفسيرات أسفل الأسئلة وحاول مرة أخرى.":"Review the explanations below and try again."}</p>`;$("#quizResult").classList.remove("hidden");
-}
-function renderDebug(){
- $("#debugList").innerHTML=bugs.map((b,i)=>`<article class="debug-card"><h4>${i+1}. ${b.title}</h4><p>${lang==="ar"?"حدد المشكلة في هذا الكود:":"Find the problem in this code:"}</p><pre class="code-block">${esc(b.code)}</pre><button class="small-btn reveal-toggle" data-target="bug${i}">${t("showFix")}</button><div class="reveal" id="bug${i}"><p><b>${t("fix")}:</b></p><pre class="code-block">${esc(b.fix)}</pre><p><b>${t("why")}:</b> ${lang==="ar"?b.whyAr:b.whyEn}</p></div></article>`).join("");bindReveal();
-}
-function renderOutputs(){
- $("#outputsList").innerHTML=outputs.map((o,i)=>`<article class="output-card"><h4>${i+1}. ${o.title}</h4><pre class="code-block">${esc(o.code)}</pre><button class="small-btn reveal-toggle" data-target="out${i}">${t("showOutput")}</button><div class="reveal" id="out${i}"><p><b>${t("sample")}:</b></p><div class="output-box">${esc(o.out)}</div><p><b>${t("why")}:</b> ${lang==="ar"?o.whyAr:o.whyEn}</p></div></article>`).join("");bindReveal();
-}
-function bindReveal(){document.querySelectorAll(".reveal-toggle").forEach(b=>b.addEventListener("click",()=>{let el=$("#"+b.dataset.target);el.classList.toggle("show");b.textContent=el.classList.contains("show")?(b.dataset.target.startsWith("bug")?t("hideFix"):t("hideOutput")):(b.dataset.target.startsWith("bug")?t("showFix"):t("showOutput"))}))}
-const pageNames={home:"homeTitle",lessons:"lessonsHeading",programs:"programsHeading",mcq:"mcqHeading",debug:"debugHeading",outputs:"outputsHeading"};
-function go(page){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));document.querySelectorAll(".nav-item").forEach(n=>n.classList.toggle("active",n.dataset.page===page));$("#pageTitle").textContent=t(pageNames[page]);$("#hero").style.display=page==="home"?"flex":"none";document.querySelector(".stats-grid").style.display=page==="home"?"grid":"none";$("#searchInput").value="";$("#searchInput").parentElement.style.display=["programs","lessons"].includes(page)?"flex":"none";window.scrollTo({top:0,behavior:"smooth"})}
-function setLang(next){lang=next;document.documentElement.lang=lang;document.body.dir=lang==="ar"?"rtl":"ltr";$("#langBtn").textContent=lang==="ar"?"English":"العربية";document.querySelectorAll("[data-i18n]").forEach(el=>{let k=el.dataset.i18n;el.innerHTML=t(k)});document.querySelectorAll("[data-placeholder]").forEach(el=>el.placeholder=t(el.dataset.placeholder));let active=document.querySelector(".page.active")?.id.replace("page-","")||"home";renderLessons();renderPrograms();renderQuiz();renderDebug();renderOutputs();go(active)}
-document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
-document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
-$("#langBtn").addEventListener("click",()=>setLang(lang==="ar"?"en":"ar"));
-$("#themeBtn").addEventListener("click",()=>document.body.classList.toggle("light"));
-$("#submitQuiz").addEventListener("click",submitQuiz);
-$("#resetQuiz").addEventListener("click",renderQuiz);
-$("#searchInput").addEventListener("input",e=>{let q=e.target.value.toLowerCase();document.querySelectorAll("#lessonsList details,#programsList .program-card").forEach(card=>card.style.display=card.textContent.toLowerCase().includes(q)?"":"none")});
-renderLessons();renderPrograms();renderQuiz();renderDebug();renderOutputs();go("home");
+
+buildExercises(outputs, "#outputContainer", false);
+buildExercises(debugExercises, "#debugContainer", true);
+
+
+// ===============================
+// 5. المظهر والسنة
+// ===============================
+
+$("#themeBtn").onclick = function() {
+    document.body.classList.toggle("light");
+};
+
+$("#year").textContent = new Date().getFullYear();
