@@ -1,174 +1,156 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#090e1c">
-    <title>Python Study Hub | منصة تعلم بايثون</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Python Study Hub - منصة تعليم وتدريب Python">
+  <title>Python Study Hub | منصة بايثون</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<header class="header">
+  <header class="topbar">
     <a class="brand" href="#">
-        <span class="brand-icon">Py</span>
-        <span>Python <b>Study Hub</b></span>
+      <span class="brand-icon">Py</span>
+      <span>Python <b>Study Hub</b></span>
     </a>
 
-    <nav>
-        <a href="#lessons">المحاضرات</a>
-        <a href="#mcq">الاختبارات</a>
-        <a href="#programs">البرامج</a>
-        <a href="#outputs">النواتج</a>
-        <a href="#debug">تصحيح الأخطاء</a>
+    <nav class="nav-links">
+      <a href="#lessons">المحاضرات</a>
+      <a href="#mcq">MCQ</a>
+      <a href="#programs">البرامج</a>
+      <a href="#outputs">النواتج</a>
+      <a href="#debug">تصحيح الأخطاء</a>
     </nav>
 
-    <button id="themeBtn" class="theme-btn">☼</button>
-</header>
-
-<section class="hero">
-    <div class="hero-content">
-        <span class="eyebrow">PYTHON LEARNING PLATFORM</span>
-
-        <h1>
-            تعلم البرمجة<br>
-            <span>بالفهم وليس بالحفظ</span>
-        </h1>
-
-        <p>
-            منصة تعليمية متكاملة لتعلم Python من الصفر،
-            مع أمثلة عملية وشرح تفصيلي لكل خطوة.
-        </p>
-
-        <a href="#lessons" class="primary-btn">ابدأ التعلم ←</a>
+    <div class="top-actions">
+      <button id="langBtn" class="small-btn">English</button>
+      <button id="themeBtn" class="small-btn">☀</button>
     </div>
+  </header>
 
-    <div class="hero-card">
-        <div class="terminal-head">
-            <span></span><span></span><span></span>
-            <small>Python Terminal</small>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">LEARN • PRACTICE • IMPROVE</span>
+        <h1>تعلّم Python<br><span>بطريقة عملية وممتعة</span></h1>
+        <p>ملخصات، برامج محلولة، أسئلة اختيار من متعدد، توقع نواتج، وتدريبات تصحيح الأخطاء.</p>
+        <div class="hero-buttons">
+          <a class="primary-btn" href="#lessons">ابدأ التعلم</a>
+          <a class="secondary-btn" href="#mcq">اختبر معلوماتك</a>
         </div>
-        <pre><code>name = "Student"
-for i in range(3):
-    print(name)
+      </div>
 
-# Output:
-Student
-Student
-Student</code></pre>
-    </div>
-</section>
-
-<div class="stats">
-    <div><strong>03</strong><span>محاضرات</span></div>
-    <div><strong>50</strong><span>MCQ</span></div>
-    <div><strong>25</strong><span>برنامج</span></div>
-    <div><strong>30</strong><span>توقع ناتج</span></div>
-    <div><strong>20</strong><span>تصحيح أخطاء</span></div>
-</div>
-
-<main>
-
-    <section id="lessons">
-        <div class="section-heading">
-            <span>LEARNING</span>
-            <h2>المحاضرات التعليمية</h2>
-            <p>افهم المفاهيم الأساسية مع الأمثلة والتطبيقات.</p>
-        </div>
-        <div id="lessonContainer" class="cards"></div>
-        <div id="lessonDetails"></div>
+      <aside class="profile-card">
+        <img src="profile.png" alt="الصورة الشخصية للطالب" class="profile-image"
+             onerror="this.style.display='none';document.getElementById('profileFallback').style.display='grid'">
+        <div id="profileFallback" class="profile-fallback">BJ</div>
+        <h3>تصميم الطالب</h3>
+        <h2>بكر جاسم</h2>
+        <a href="https://instagram.com/b9.is" target="_blank" rel="noopener" class="instagram-link">
+          @b9.is ↗
+        </a>
+        <p>Computer Science Student</p>
+      </aside>
     </section>
 
-    <section id="mcq">
-        <div class="section-heading">
-            <span>TEST YOURSELF</span>
-            <h2>اختبارات MCQ</h2>
-            <p>اختر الإجابة، ثم اقرأ الشرح التفصيلي.</p>
-        </div>
-
-        <div class="quiz-card">
-            <div class="quiz-top">
-                <span id="quizNumber">السؤال 1</span>
-                <span id="quizScore">النتيجة: 0</span>
-            </div>
-
-            <div class="progress">
-                <div id="progressBar"></div>
-            </div>
-
-            <h3 id="question"></h3>
-            <div id="answers" class="answers"></div>
-            <div id="feedback"></div>
-
-            <div class="quiz-actions">
-                <button id="nextBtn" class="primary-btn" disabled>
-                    السؤال التالي
-                </button>
-                <button id="restartBtn" class="secondary-btn">
-                    إعادة الاختبار
-                </button>
-            </div>
-        </div>
+    <section class="stats-grid">
+      <div class="stat-card"><strong id="mcqCount">0</strong><span>سؤال MCQ</span></div>
+      <div class="stat-card"><strong id="programCount">0</strong><span>برنامج تدريبي</span></div>
+      <div class="stat-card"><strong id="outputCount">0</strong><span>سؤال نواتج</span></div>
+      <div class="stat-card"><strong id="debugCount">0</strong><span>تمرين تصحيح</span></div>
     </section>
 
-    <section id="programs">
-        <div class="section-heading">
-            <span>PRACTICE</span>
-            <h2>برامج Python</h2>
-            <p>تعلم كتابة البرامج وفهم كل سطر من الكود.</p>
-        </div>
-
-        <div class="filters">
-            <input id="programSearch" placeholder="ابحث عن برنامج...">
-            <select id="programCategory">
-                <option value="all">كل البرامج</option>
-                <option value="variables">Variables</option>
-                <option value="conditions">Conditions</option>
-                <option value="loops">Loops</option>
-            </select>
-        </div>
-
-        <div id="programContainer" class="cards"></div>
+    <section class="section" id="lessons">
+      <div class="section-heading">
+        <div><span class="eyebrow">COURSE CONTENT</span><h2>المحاضرات والملخصات</h2></div>
+      </div>
+      <div class="lesson-grid">
+        <article class="lesson-card">
+          <span class="lesson-number">02</span>
+          <h3>Variables & Data Types</h3>
+          <p>المتغيرات، أنواع البيانات، الإدخال، التحويل بين الأنواع، والعمليات الحسابية والمنطقية.</p>
+          <ul>
+            <li>int, float, str, bool</li>
+            <li>input() و type()</li>
+            <li>Type Casting</li>
+            <li>Arithmetic Operators</li>
+          </ul>
+        </article>
+        <article class="lesson-card">
+          <span class="lesson-number">03</span>
+          <h3>Conditional Statements</h3>
+          <p>اتخاذ القرارات داخل البرنامج باستخدام الشروط.</p>
+          <ul>
+            <li>if و else</li>
+            <li>if / elif / else</li>
+            <li>and و or و not</li>
+            <li>Nested if</li>
+          </ul>
+        </article>
+        <article class="lesson-card">
+          <span class="lesson-number">04</span>
+          <h3>Loops</h3>
+          <p>التكرار باستخدام while و for مع التحكم في مسار الحلقة.</p>
+          <ul>
+            <li>while و for</li>
+            <li>range()</li>
+            <li>break و continue</li>
+            <li>Nested Loops</li>
+          </ul>
+        </article>
+      </div>
     </section>
 
-    <section id="outputs">
-        <div class="section-heading">
-            <span>OUTPUT CHALLENGE</span>
-            <h2>توقع ناتج البرنامج</h2>
-            <p>حلل الكود بنفسك، ثم اعرض الإجابة والتفسير.</p>
-        </div>
-
-        <div id="outputContainer" class="exercise-list"></div>
+    <section class="section" id="mcq">
+      <div class="section-heading">
+        <div><span class="eyebrow">TEST YOUR KNOWLEDGE</span><h2>أسئلة الاختيار من متعدد MCQ</h2></div>
+        <span class="section-note">اختر إجابة ثم اضغط تحقق</span>
+      </div>
+      <div class="toolbar">
+        <input id="mcqSearch" type="search" placeholder="ابحث في الأسئلة...">
+        <select id="mcqFilter">
+          <option value="all">كل المحاضرات</option>
+          <option value="Variables">المتغيرات</option>
+          <option value="Conditions">الشروط</option>
+          <option value="Loops">الحلقات</option>
+        </select>
+      </div>
+      <div id="mcqList" class="content-list"></div>
     </section>
 
-    <section id="debug">
-        <div class="section-heading">
-            <span>DEBUGGING</span>
-            <h2>اكتشف الخطأ وصححه</h2>
-            <p>تعلم كيف تكتشف أخطاء Python وتفهم أسبابها.</p>
-        </div>
-
-        <div id="debugContainer" class="exercise-list"></div>
+    <section class="section" id="programs">
+      <div class="section-heading">
+        <div><span class="eyebrow">PRACTICAL PYTHON</span><h2>برامج Python مع الشرح</h2></div>
+      </div>
+      <input id="programSearch" class="search-box" type="search" placeholder="ابحث عن برنامج...">
+      <div id="programList" class="content-list"></div>
     </section>
 
-</main>
+    <section class="section" id="outputs">
+      <div class="section-heading">
+        <div><span class="eyebrow">PREDICT THE OUTPUT</span><h2>توقّع ناتج البرنامج</h2></div>
+      </div>
+      <p class="section-description">اقرأ الكود أولاً، وحاول معرفة الناتج قبل إظهار الحل. انتبه إلى ترتيب التنفيذ وقيمة المتغيرات بعد كل خطوة.</p>
+      <div id="outputList" class="content-list"></div>
+    </section>
 
-<footer>
-    <div class="footer-profile">
-        <img src="profile.png" alt="صورة الطالب بكر جاسم">
-        <div>
-            <strong>تصميم الطالب بكر جاسم</strong>
-            <a href="https://www.instagram.com/b9.is/"
-               target="_blank" rel="noopener noreferrer">
-                @b9.is
-            </a>
-        </div>
-    </div>
+    <section class="section" id="debug">
+      <div class="section-heading">
+        <div><span class="eyebrow">DEBUGGING PRACTICE</span><h2>اكتشف الخطأ وصححه</h2></div>
+      </div>
+      <p class="section-description">كل تمرين يحتوي على كود فيه خطأ. حاول تحديد المشكلة، ثم اعرض التصحيح والشرح.</p>
+      <div id="debugList" class="content-list"></div>
+    </section>
+  </main>
 
-    <p>جميع الحقوق محفوظة © <span id="year"></span></p>
-</footer>
+  <footer>
+    <p>© 2026 Python Study Hub</p>
+    <p>تصميم الطالب <b>بكر جاسم</b> — <a href="https://instagram.com/b9.is" target="_blank" rel="noopener">b9.is</a></p>
+  </footer>
 
-<script src="script.js"></script>
+  <button id="backTop" title="العودة للأعلى">↑</button>
+  <script src="script.js"></script>
 </body>
 </html>
