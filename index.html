@@ -1,156 +1,398 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Python Study Hub - منصة تعليم وتدريب Python">
-  <title>Python Study Hub | منصة بايثون</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="موقع مراجعة شامل لمادة Python - المحاضرات 2 و3 و4">
+<title>مراجعة Python | الطالب بكر جاسم حسن</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#">
-      <span class="brand-icon">Py</span>
-      <span>Python <b>Study Hub</b></span>
-    </a>
+<div class="top-progress"><span id="readingProgress"></span></div>
+<header class="site-header">
+  <a class="brand" href="#home"><span class="brand-mark">Py</span><span><b>Python</b><small>مراجعة المحاضرات 2 - 3 - 4</small></span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">☰</button>
+  <nav id="mainNav">
+    <a href="#overview">الملخص</a><a href="#lecture2">المحاضرة 2</a><a href="#lecture3">المحاضرة 3</a>
+    <a href="#lecture4">المحاضرة 4</a><a href="#programs">البرامج</a><a href="#debug">تصحيح الأخطاء</a>
+    <a href="#outputs">النواتج</a><a href="#quiz">اختبار MCQ</a>
+  </nav>
+  <button class="theme-btn" id="themeToggle" title="تبديل المظهر">☼</button>
+</header>
 
-    <nav class="nav-links">
-      <a href="#lessons">المحاضرات</a>
-      <a href="#mcq">MCQ</a>
-      <a href="#programs">البرامج</a>
-      <a href="#outputs">النواتج</a>
-      <a href="#debug">تصحيح الأخطاء</a>
-    </nav>
+<main>
+<section class="hero" id="home">
+ <div class="hero-copy">
+  <span class="eyebrow">دليلك الدراسي التفاعلي</span>
+  <h1>تعلم Python<br><em>وافهمها خطوة بخطوة</em></h1>
+  <p>ملخص وشرح وأهم البرامج وتصحيح الأكواد وتتبع النواتج واختبار من 50 سؤالاً، اعتماداً على المحاضرات المرفقة فقط.</p>
+  <div class="hero-actions"><a class="btn primary" href="#overview">ابدأ المراجعة <span>←</span></a><a class="btn ghost" href="#quiz">اختبر نفسك</a></div>
+  <div class="hero-meta"><span>3 محاضرات</span><span>50 سؤال MCQ</span><span>30 سؤال نواتج</span></div>
+ </div>
+ <div class="hero-code" aria-label="مثال بايثون"><div class="code-head"><i></i><i></i><i></i><span>hello.py</span></div><pre><code><b>name</b> = <s>"Bakr"</s>
+<b>for</b> i <b>in</b> <u>range</u>(3):
+    <u>print</u>(<s>f"Hello {name}"</s>)
 
-    <div class="top-actions">
-      <button id="langBtn" class="small-btn">English</button>
-      <button id="themeBtn" class="small-btn">☀</button>
-    </div>
-  </header>
+<span class="comment"># Learn • Practice • Improve</span></code></pre><div class="code-foot">Python Programming Course <span>● Online Study</span></div></div>
+</section>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <span class="eyebrow">LEARN • PRACTICE • IMPROVE</span>
-        <h1>تعلّم Python<br><span>بطريقة عملية وممتعة</span></h1>
-        <p>ملخصات، برامج محلولة، أسئلة اختيار من متعدد، توقع نواتج، وتدريبات تصحيح الأخطاء.</p>
-        <div class="hero-buttons">
-          <a class="primary-btn" href="#lessons">ابدأ التعلم</a>
-          <a class="secondary-btn" href="#mcq">اختبر معلوماتك</a>
-        </div>
-      </div>
+<section class="stats-grid">
+ <article class="stat"><strong>02</strong><span>Variables & Operators</span><small>المحاضرة الثانية</small></article>
+ <article class="stat"><strong>03</strong><span>Conditional Statements</span><small>المحاضرة الثالثة</small></article>
+ <article class="stat"><strong>04</strong><span>Loops</span><small>المحاضرة الرابعة</small></article>
+ <article class="stat"><strong>50</strong><span>MCQ Questions</span><small>اختبر معلوماتك</small></article>
+</section>
 
-      <aside class="profile-card">
-        <img src="profile.png" alt="الصورة الشخصية للطالب" class="profile-image"
-             onerror="this.style.display='none';document.getElementById('profileFallback').style.display='grid'">
-        <div id="profileFallback" class="profile-fallback">BJ</div>
-        <h3>تصميم الطالب</h3>
-        <h2>بكر جاسم</h2>
-        <a href="https://instagram.com/b9.is" target="_blank" rel="noopener" class="instagram-link">
-          @b9.is ↗
-        </a>
-        <p>Computer Science Student</p>
-      </aside>
-    </section>
+<section class="section" id="overview">
+ <div class="section-heading"><div><span class="eyebrow">خارطة الطريق</span><h2>ملخص المادة بالكامل</h2></div><p>ثلاث محاضرات مترابطة: نخزن البيانات، نتخذ القرارات، ثم نكرر الأوامر.</p></div>
+ <div class="roadmap">
+  <article><span class="num">01</span><h3>المتغيرات والعمليات</h3><p>تعريف المتغيرات وأنواع البيانات والتحويلات والعمليات الحسابية والمنطقية.</p><a href="#lecture2">اذهب للمحاضرة ←</a></article>
+  <article><span class="num">02</span><h3>الجمل الشرطية</h3><p>استخدام if وelse وelif لاتخاذ القرار حسب نتيجة الشرط True أو False.</p><a href="#lecture3">اذهب للمحاضرة ←</a></article>
+  <article><span class="num">03</span><h3>الحلقات التكرارية</h3><p>استخدام while وfor وrange مع break وcontinue والحلقات المتداخلة.</p><a href="#lecture4">اذهب للمحاضرة ←</a></article>
+ </div>
+</section>
 
-    <section class="stats-grid">
-      <div class="stat-card"><strong id="mcqCount">0</strong><span>سؤال MCQ</span></div>
-      <div class="stat-card"><strong id="programCount">0</strong><span>برنامج تدريبي</span></div>
-      <div class="stat-card"><strong id="outputCount">0</strong><span>سؤال نواتج</span></div>
-      <div class="stat-card"><strong id="debugCount">0</strong><span>تمرين تصحيح</span></div>
-    </section>
+<section class="section lecture-section" id="lecture2">
+ <div class="section-heading"><div><span class="eyebrow">LECTURE 2</span><h2>Variables, Data Types & Operators</h2></div><span class="pill">المتغيرات والأنواع والعمليات</span></div>
+ <div class="content-grid">
+  <article class="paper">
+   <h3>1. المتغيرات Variables</h3><p>المتغير حاوية تحمل اسماً وتخزن قيمة في ذاكرة الحاسوب لاستخدامها لاحقاً. نستخدم علامة الإسناد <code>=</code>.</p>
+   <pre><code>age = 20
+name = "Sara"
+price = 4.75
+print(name, age, price)
 
-    <section class="section" id="lessons">
-      <div class="section-heading">
-        <div><span class="eyebrow">COURSE CONTENT</span><h2>المحاضرات والملخصات</h2></div>
-      </div>
-      <div class="lesson-grid">
-        <article class="lesson-card">
-          <span class="lesson-number">02</span>
-          <h3>Variables & Data Types</h3>
-          <p>المتغيرات، أنواع البيانات، الإدخال، التحويل بين الأنواع، والعمليات الحسابية والمنطقية.</p>
-          <ul>
-            <li>int, float, str, bool</li>
-            <li>input() و type()</li>
-            <li>Type Casting</li>
-            <li>Arithmetic Operators</li>
-          </ul>
-        </article>
-        <article class="lesson-card">
-          <span class="lesson-number">03</span>
-          <h3>Conditional Statements</h3>
-          <p>اتخاذ القرارات داخل البرنامج باستخدام الشروط.</p>
-          <ul>
-            <li>if و else</li>
-            <li>if / elif / else</li>
-            <li>and و or و not</li>
-            <li>Nested if</li>
-          </ul>
-        </article>
-        <article class="lesson-card">
-          <span class="lesson-number">04</span>
-          <h3>Loops</h3>
-          <p>التكرار باستخدام while و for مع التحكم في مسار الحلقة.</p>
-          <ul>
-            <li>while و for</li>
-            <li>range()</li>
-            <li>break و continue</li>
-            <li>Nested Loops</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+x = 5
+x = x + 1
+print(x)  # 6
 
-    <section class="section" id="mcq">
-      <div class="section-heading">
-        <div><span class="eyebrow">TEST YOUR KNOWLEDGE</span><h2>أسئلة الاختيار من متعدد MCQ</h2></div>
-        <span class="section-note">اختر إجابة ثم اضغط تحقق</span>
-      </div>
-      <div class="toolbar">
-        <input id="mcqSearch" type="search" placeholder="ابحث في الأسئلة...">
-        <select id="mcqFilter">
-          <option value="all">كل المحاضرات</option>
-          <option value="Variables">المتغيرات</option>
-          <option value="Conditions">الشروط</option>
-          <option value="Loops">الحلقات</option>
-        </select>
-      </div>
-      <div id="mcqList" class="content-list"></div>
-    </section>
+a, b, c = 1, 2, 3
+a, b = b, a
+print(a, b)  # 2 1</code></pre>
+   <h4>قواعد تسمية المتغيرات</h4><ul><li>تستخدم الحروف والأرقام والشرطة السفلية _.</li><li>لا يبدأ الاسم برقم.</li><li>الأسماء حساسة لحالة الأحرف: age يختلف عن Age.</li><li>لا تستخدم الكلمات المحجوزة مثل class وif وfor وTrue.</li><li>يفضل اسم واضح وبصيغة snake_case مثل student_name.</li></ul>
+   <div class="note">Python تستخدم Dynamic Typing؛ لا نحتاج إلى تحديد نوع المتغير مسبقاً، والنوع يُفهم من القيمة.</div>
+  </article>
+  <article class="paper">
+   <h3>2. أنواع البيانات Data Types</h3>
+   <div class="table-wrap"><table><tr><th>النوع</th><th>المعنى</th><th>مثال</th></tr><tr><td>int</td><td>عدد صحيح</td><td>25, -7, 0</td></tr><tr><td>float</td><td>عدد عشري</td><td>3.14, -0.5</td></tr><tr><td>str</td><td>نص بين علامات اقتباس</td><td>"Hello"</td></tr><tr><td>bool</td><td>قيمة منطقية</td><td>True / False</td></tr></table></div>
+   <pre><code>print(type(25))       # int
+print(type(3.14))     # float
+print(type("Hello"))  # str
+print(type(True))     # bool
 
-    <section class="section" id="programs">
-      <div class="section-heading">
-        <div><span class="eyebrow">PRACTICAL PYTHON</span><h2>برامج Python مع الشرح</h2></div>
-      </div>
-      <input id="programSearch" class="search-box" type="search" placeholder="ابحث عن برنامج...">
-      <div id="programList" class="content-list"></div>
-    </section>
+first = "Python"
+second = "Rocks"
+print(first + " " + second) # Python Rocks
+print("ha" * 3)             # hahaha
+print(len(first))           # 6</code></pre>
+   <h3>3. التحويل Type Casting</h3><p>الدوال الأساسية: <code>int()</code> و<code>float()</code> و<code>str()</code> و<code>bool()</code>. الدالة input() ترجع نصاً دائماً.</p>
+   <pre><code>int("42")       # 42
+int(3.9)        # 3 (حذف الجزء العشري)
+float("3.5")    # 3.5
+float(5)        # 5.0
+str(25)         # "25"
+bool(0)         # False
+bool("hi")      # True
 
-    <section class="section" id="outputs">
-      <div class="section-heading">
-        <div><span class="eyebrow">PREDICT THE OUTPUT</span><h2>توقّع ناتج البرنامج</h2></div>
-      </div>
-      <p class="section-description">اقرأ الكود أولاً، وحاول معرفة الناتج قبل إظهار الحل. انتبه إلى ترتيب التنفيذ وقيمة المتغيرات بعد كل خطوة.</p>
-      <div id="outputList" class="content-list"></div>
-    </section>
+a = int(input("First: "))
+b = int(input("Second: "))
+print(a + b)    # عند إدخال 5 و3: 8</code></pre>
+  </article>
+  <article class="paper">
+   <h3>4. العمليات الحسابية Arithmetic</h3>
+   <div class="table-wrap"><table><tr><th>المعامل</th><th>العملية</th><th>مثال</th><th>الناتج</th></tr><tr><td>+</td><td>جمع</td><td>7 + 3</td><td>10</td></tr><tr><td>-</td><td>طرح</td><td>7 - 3</td><td>4</td></tr><tr><td>*</td><td>ضرب</td><td>7 * 3</td><td>21</td></tr><tr><td>/</td><td>قسمة</td><td>7 / 2</td><td>3.5</td></tr><tr><td>%</td><td>باقي القسمة</td><td>17 % 5</td><td>2</td></tr><tr><td>**</td><td>أس</td><td>2 ** 3</td><td>8</td></tr></table></div>
+   <h4>أولوية العمليات</h4><p>الأقواس أولاً، ثم الأس، ثم الضرب والقسمة وباقي القسمة من اليسار لليمين، ثم الجمع والطرح من اليسار لليمين.</p>
+   <pre><code>2 + 3 * 4       # 14
+(2 + 3) * 4     # 20
+2 ** 3 * 2      # 16
+10 - 4 - 3      # 3
+10 / 2 * 5      # 25.0</code></pre>
+  </article>
+  <article class="paper">
+   <h3>5. المقارنة والمنطق</h3>
+   <p>المقارنة تنتج True أو False:</p><p class="operator-line"><code>==</code> يساوي · <code>!=</code> لا يساوي · <code>&gt;</code> أكبر · <code>&lt;</code> أصغر · <code>&gt;=</code> أكبر أو يساوي · <code>&lt;=</code> أصغر أو يساوي</p>
+   <p>المعاملات المنطقية: <code>and</code> (كلا الشرطين صحيح)، <code>or</code> (واحد على الأقل صحيح)، <code>not</code> (يعكس القيمة).</p>
+   <pre><code>age = 20
+has_id = True
+print(age >= 18 and has_id) # True
+print(age < 18 or age > 60) # False
+print(not has_id)           # False
+print(1 < age < 30)         # True</code></pre>
+   <h3>6. اختصارات الإسناد</h3><p><code>x += 5</code> تعني <code>x = x + 5</code>، وكذلك <code>-=</code> و<code>*=</code> و<code>/=</code> و<code>%=</code> و<code>**=</code>. لا يوجد ++ أو -- في Python.</p>
+   <h3>7. تنسيق f-strings</h3><pre><code>name = "Sara"
+age = 20
+print(f"Hello {name}, you are {age} years old.")
 
-    <section class="section" id="debug">
-      <div class="section-heading">
-        <div><span class="eyebrow">DEBUGGING PRACTICE</span><h2>اكتشف الخطأ وصححه</h2></div>
-      </div>
-      <p class="section-description">كل تمرين يحتوي على كود فيه خطأ. حاول تحديد المشكلة، ثم اعرض التصحيح والشرح.</p>
-      <div id="debugList" class="content-list"></div>
-    </section>
-  </main>
+price = 4.5
+print(f"The price is {price:.2f} dollars")
+# The price is 4.50 dollars</code></pre>
+   <p><code>:.2f</code> منزلتان عشريتان، <code>:.0f</code> دون منازل، و<code>:,</code> فاصل الآلاف.</p>
+  </article>
+ </div>
+</section>
 
-  <footer>
-    <p>© 2026 Python Study Hub</p>
-    <p>تصميم الطالب <b>بكر جاسم</b> — <a href="https://instagram.com/b9.is" target="_blank" rel="noopener">b9.is</a></p>
-  </footer>
+<section class="section lecture-section" id="lecture3">
+ <div class="section-heading"><div><span class="eyebrow">LECTURE 3</span><h2>Conditional Statements</h2></div><span class="pill">الجمل الشرطية</span></div>
+ <div class="content-grid">
+  <article class="paper">
+   <h3>1. اتخاذ القرار</h3><p>الجملة الشرطية تجعل البرنامج يختار الأسطر التي ينفذها اعتماداً على شرط نتيجته True أو False.</p>
+   <h3>2. if</h3><p>تنفذ الكتلة فقط عندما يكون الشرط صحيحاً. يجب وضع النقطتين <code>:</code> ثم إزاحة الأسطر التابعة بمقدار 4 مسافات.</p>
+   <pre><code>age = int(input("Enter your age: "))
+if age >= 18:
+    print("You are an adult.")
+print("Program finished.")</code></pre>
+   <h3>3. if-else</h3><p>تستخدم عندما يوجد مساران: إذا تحقق الشرط ينفذ if، وإلا ينفذ else.</p>
+   <pre><code>number = int(input("Enter a whole number: "))
+if number % 2 == 0:
+    print(f"{number} is even")
+else:
+    print(f"{number} is odd")</code></pre>
+  </article>
+  <article class="paper">
+   <h3>4. if-elif-else</h3><p>تستخدم لأكثر من احتمال. يفحص Python الشروط من الأعلى إلى الأسفل وينفذ أول شرط صحيح فقط؛ لذلك نضع الشرط الأكثر تحديداً أولاً.</p>
+   <pre><code>score = int(input("Enter your score: "))
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
+elif score >= 60:
+    grade = "D"
+else:
+    grade = "F"
+print(f"Your grade is {grade}")</code></pre>
+   <h3>5. الشروط المتداخلة</h3><p>يمكن وضع if داخل if، مثل التحقق من العمر ثم التحقق من وجود هوية.</p>
+   <pre><code>age = 20
+has_id = False
+if age >= 18:
+    if has_id:
+        print("Enter")
+    else:
+        print("ID required")
+else:
+    print("Denied")</code></pre>
+   <h3>6. Truthiness</h3><p>القيم 0 والنص الفارغ "" تعتبر False، والنص غير الفارغ مثل "hello" يعتبر True عند استخدامه كشرط.</p>
+  </article>
+  <article class="paper">
+   <h3>7. التعبير الشرطي المختصر</h3><pre><code>age = 20
+status = "adult" if age >= 18 else "minor"
+print(status)  # adult</code></pre>
+   <h3>8. match-case (اختياري)</h3><p>متاح من Python 3.10، لمقارنة متغير مع قيم ثابتة متعددة. الرمز <code>_</code> يمثل الحالة الافتراضية.</p>
+   <pre><code>choice = input("Choose a, b or c: ")
+match choice:
+    case "a":
+        print("You chose A")
+    case "b":
+        print("You chose B")
+    case "c":
+        print("You chose C")
+    case _:
+        print("Invalid choice")</code></pre>
+   <h3>9. أخطاء شائعة</h3><ul><li>نسيان النقطتين بعد if.</li><li>نسيان الإزاحة داخل الكتلة.</li><li>استخدام = للمقارنة بدلاً من ==.</li><li>مقارنة input() النصي مع رقم دون تحويله إلى int.</li><li>كتابة <code>if day == "Sat" or "Sun"</code>؛ الصحيح تكرار المقارنة في الطرفين.</li><li>وضع شرط عام قبل شرط أكثر تحديداً في elif.</li></ul>
+  </article>
+  <article class="paper">
+   <h3>10. أمثلة المحاضرة</h3>
+   <h4>آلة حاسبة تتجنب القسمة على صفر</h4><pre><code>num1 = float(input("First number: "))
+op = input("Operator (+, -, *, /): ")
+num2 = float(input("Second number: "))
 
-  <button id="backTop" title="العودة للأعلى">↑</button>
-  <script src="script.js"></script>
+if op == "+":
+    print(f"Result = {num1 + num2}")
+elif op == "-":
+    print(f"Result = {num1 - num2}")
+elif op == "*":
+    print(f"Result = {num1 * num2}")
+elif op == "/":
+    if num2 == 0:
+        print("Error: cannot divide by zero.")
+    else:
+        print(f"Result = {num1 / num2}")
+else:
+    print("Invalid operator.")</code></pre>
+   <h4>السنة الكبيسة</h4><pre><code>year = int(input("Enter a year: "))
+if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
+    print(f"{year} is a leap year.")
+else:
+    print(f"{year} is not a leap year.")</code></pre>
+   <h4>أكبر ثلاثة أعداد</h4><pre><code>a = int(input("First number: "))
+b = int(input("Second number: "))
+c = int(input("Third number: "))
+if a >= b and a >= c:
+    largest = a
+elif b >= a and b >= c:
+    largest = b
+else:
+    largest = c
+print(f"The largest number is {largest}")</code></pre>
+  </article>
+ </div>
+</section>
+
+<section class="section lecture-section" id="lecture4">
+ <div class="section-heading"><div><span class="eyebrow">LECTURE 4</span><h2>Loops: while and for</h2></div><span class="pill">الحلقات التكرارية</span></div>
+ <div class="content-grid">
+  <article class="paper">
+   <h3>1. لماذا نستخدم الحلقات؟</h3><p>الحلقة تكرر مجموعة أوامر دون كتابة الأوامر نفسها مرات متعددة. كل تكرار يسمى Iteration.</p>
+   <div class="table-wrap"><table><tr><th>while</th><th>for</th></tr><tr><td>عندما يستمر التكرار ما دام الشرط True، وعدد المرات غير معروف مسبقاً.</td><td>عندما نعرف عدد مرات التكرار أو نريد المرور على عناصر تسلسل.</td></tr></table></div>
+   <h3>2. while</h3><p>يفحص الشرط قبل كل تكرار. كل حلقة while سليمة تتكون من قيمة بداية وشرط وتحديث يجعل الشرط يصبح False.</p>
+   <pre><code>count = 1
+while count <= 5:
+    print(count)
+    count += 1
+print("Done")</code></pre>
+   <p>الناتج: 1 ثم 2 ثم 3 ثم 4 ثم 5 ثم Done. نسيان التحديث قد يسبب Infinite Loop.</p>
+   <h3>3. while مع إدخال المستخدم</h3>
+   <pre><code>password = input("Enter the password: ")
+while password != "python123":
+    print("Wrong password. Try again.")
+    password = input("Enter the password: ")
+print("Access granted!")</code></pre>
+   <p>قيمة Sentinel هي قيمة خاصة توقف الحلقة، مثل إدخال 0.</p>
+   <pre><code>total = 0
+number = int(input("Number (0 to stop): "))
+while number != 0:
+    total += number
+    number = int(input("Number (0 to stop): "))
+print(f"Total = {total}")</code></pre>
+  </article>
+  <article class="paper">
+   <h3>4. for و range()</h3><p>تمر حلقة for على عناصر التسلسل واحداً بعد الآخر. الدالة range لها ثلاث صيغ:</p>
+   <div class="table-wrap"><table><tr><th>الصيغة</th><th>القيم</th></tr><tr><td>range(5)</td><td>0, 1, 2, 3, 4</td></tr><tr><td>range(1, 6)</td><td>1, 2, 3, 4, 5</td></tr><tr><td>range(0, 10, 2)</td><td>0, 2, 4, 6, 8</td></tr><tr><td>range(5, 0, -1)</td><td>5, 4, 3, 2, 1</td></tr></table></div>
+   <pre><code>for i in range(1, 6):
+    print(i)
+
+total = 0
+for i in range(1, 101):
+    total += i
+print(f"The sum is {total}") # 5050</code></pre>
+   <h3>المرور على النص</h3><pre><code>for letter in "Python":
+    print(letter)
+print("a" in "banana") # True
+print("z" in "banana") # False</code></pre>
+   <h3>متى أختار for أو while؟</h3><ul><li>عدد تكرارات معروف: for مع range().</li><li>المرور على أحرف نص: for.</li><li>الاستمرار حتى يحدث أمر معين: while.</li></ul>
+  </article>
+  <article class="paper">
+   <h3>5. break وcontinue</h3><p><code>break</code> ينهي الحلقة فوراً. <code>continue</code> يتجاوز بقية التكرار الحالي وينتقل للتكرار التالي.</p>
+   <pre><code>for i in range(1, 11):
+    if i == 5:
+        break
+    print(i)
+print("Loop ended")
+# 1 2 3 4 ثم Loop ended
+
+for i in range(1, 8):
+    if i % 2 == 0:
+        continue
+    print(i)
+# 1 3 5 7</code></pre>
+   <h3>while True</h3><pre><code>while True:
+    text = input("Type 'exit' to quit: ")
+    if text == "exit":
+        break
+    print(f"You typed: {text}")
+print("Goodbye!")</code></pre>
+   <h3>6. الحلقات المتداخلة Nested Loops</h3><p>لكل تكرار من الحلقة الخارجية، تنفذ الحلقة الداخلية كاملة.</p>
+   <pre><code>for i in range(1, 4):
+    for j in range(1, 4):
+        print(i * j, end=" ")
+    print()
+
+# 1 2 3
+# 2 4 6
+# 3 6 9</code></pre>
+   <p>المعامل <code>end</code> يغير ما تطبعه print في نهاية السطر. مثال: <code>print("A", end="")</code>.</p>
+  </article>
+  <article class="paper">
+   <h3>7. أنماط الحلقات الشائعة</h3>
+   <ul><li><b>Counter:</b> عدّ عدد مرات حدوث شيء.</li><li><b>Accumulator:</b> تجميع قيم في متغير total.</li><li><b>Search:</b> البحث والتوقف عند العثور على القيمة باستخدام break.</li></ul>
+   <pre><code>count = 0
+for i in range(1, 21):
+    if i % 2 == 0:
+        count += 1
+
+total = 0
+for i in range(1, 6):
+    total += i</code></pre>
+   <h3>8. أمثلة مهمة</h3>
+   <h4>المضروب Factorial</h4><pre><code>n = int(input("Enter n (0 or more): "))
+result = 1
+for i in range(1, n + 1):
+    result *= i
+print(f"{n}! = {result}")
+# عند n=5 الناتج 5! = 120</code></pre>
+   <h4>فحص العدد الأولي</h4><pre><code>number = int(input("Enter a number (> 1): "))
+is_prime = True
+for i in range(2, number):
+    if number % i == 0:
+        is_prime = False
+        break
+if is_prime:
+    print(f"{number} is prime")
+else:
+    print(f"{number} is not prime")</code></pre>
+   <h4>مجموع الأرقام</h4><pre><code>number = int(input("Enter a positive number: "))
+total = 0
+while number > 0:
+    digit = number % 10
+    total += digit
+    number //= 10
+print(f"Sum of digits = {total}")
+# 1234 => 10</code></pre>
+  </article>
+ </div>
+</section>
+
+<section class="section" id="programs">
+ <div class="section-heading"><div><span class="eyebrow">PRACTICAL</span><h2>البرامج المهمة للمراجعة</h2></div><p>أمثلة أساسية من المحاضرات وتمارينها.</p></div>
+ <div class="program-list" id="programList"></div>
+</section>
+
+<section class="section" id="debug">
+ <div class="section-heading"><div><span class="eyebrow">DEBUGGING</span><h2>تصحيح البرامج والأخطاء الشائعة</h2></div><p>اقرأ الخطأ، اعرف سببه، ثم قارن بالتصحيح.</p></div>
+ <div class="debug-list" id="debugList"></div>
+</section>
+
+<section class="section" id="outputs">
+ <div class="section-heading"><div><span class="eyebrow">TRACE THE CODE</span><h2>توقع ناتج البرنامج</h2></div><p>30 سؤالاً تدريبياً مع إظهار الإجابة والتفسير.</p></div>
+ <div class="toolbar"><span id="outputCount">30 سؤال</span><button class="btn small ghost" id="showAllOutputs">إظهار كل النواتج</button></div>
+ <div id="outputList" class="qa-list"></div>
+</section>
+
+<section class="section quiz-section" id="quiz">
+ <div class="section-heading"><div><span class="eyebrow">EXAM MODE</span><h2>اختبار MCQ — 50 سؤالاً</h2></div><p>اختر إجابة واحدة، وستظهر لك النتيجة والتصحيح.</p></div>
+ <div class="quiz-top"><div><b id="quizProgressText">السؤال 1 من 50</b><div class="progress-track"><span id="quizProgress"></span></div></div><div class="score-chip">النتيجة: <strong id="score">0</strong></div></div>
+ <div id="quizArea" class="quiz-card"></div>
+ <div class="quiz-controls"><button class="btn ghost" id="prevQuestion">السابق</button><button class="btn primary" id="nextQuestion">التالي</button><button class="btn ghost" id="restartQuiz">إعادة الاختبار</button></div>
+ <div id="quizResult" class="quiz-result" hidden></div>
+</section>
+
+<section class="section final-notes">
+ <div class="section-heading"><div><span class="eyebrow">BEFORE THE EXAM</span><h2>ملاحظات ذهبية</h2></div></div>
+ <div class="tips-grid">
+  <div> <b>= و ==</b><span>= للإسناد، و== للمقارنة.</span></div>
+  <div><b>input()</b><span>ترجع str؛ حولها إلى int أو float عند الحاجة.</span></div>
+  <div><b>Indentation</b><span>المسافات تحدد الكتلة التابعة للشرط أو الحلقة.</span></div>
+  <div><b>range()</b><span>قيمة stop غير مشمولة.</span></div>
+  <div><b>while</b><span>تأكد من وجود تحديث حتى لا تقع في حلقة لا نهائية.</span></div>
+  <div><b>break / continue</b><span>break ينهي الحلقة، وcontinue يتجاوز التكرار الحالي.</span></div>
+  <div><b>elif</b><span>ترتيب الشروط مهم؛ أول شرط True هو الذي ينفذ.</span></div>
+  <div><b>Division</b><span>المعامل / يعطي ناتجاً عشرياً دائماً.</span></div>
+ </div>
+ <p class="source-note">المحتوى الدراسي في هذا الموقع مبني على المحاضرات المرفقة: Lecture 2 وLecture 3 وLecture 4. لم تتم إضافة موضوعات خارجها، باستثناء صياغة الشرح بالعربية وتنظيمه.</p>
+</section>
+</main>
+
+<footer class="footer">
+ <div class="footer-logo">Py<span>.</span></div>
+ <p>تصميم وبرمجة الطالب</p>
+ <a class="author-link" href="https://www.instagram.com/b9.is/" target="_blank" rel="noopener noreferrer">بكر جاسم حسن ↗</a>
+ <small>جميع الحقوق محفوظة © <span id="year"></span> — Python Study Website</small>
+</footer>
+<button id="toTop" class="to-top" aria-label="العودة للأعلى">↑</button>
+<script src="script.js"></script>
 </body>
 </html>
