@@ -4,114 +4,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Study Hub</title>
+    <meta name="theme-color" content="#090e1c">
+    <title>Python Study Hub | منصة تعلم بايثون</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="navbar">
-    <div class="logo">Py <span>Study Hub</span></div>
+<header class="header">
+    <a class="brand" href="#">
+        <span class="brand-icon">Py</span>
+        <span>Python <b>Study Hub</b></span>
+    </a>
 
     <nav>
         <a href="#lessons">المحاضرات</a>
-        <a href="#mcq">MCQ</a>
+        <a href="#mcq">الاختبارات</a>
         <a href="#programs">البرامج</a>
         <a href="#outputs">النواتج</a>
         <a href="#debug">تصحيح الأخطاء</a>
     </nav>
 
-    <button id="themeBtn">تغيير المظهر</button>
+    <button id="themeBtn" class="theme-btn">☼</button>
 </header>
 
 <section class="hero">
     <div class="hero-content">
-        <span class="tag">PYTHON LEARNING PLATFORM</span>
+        <span class="eyebrow">PYTHON LEARNING PLATFORM</span>
 
         <h1>
-            تعلم Python
-            <span>بالفهم والتطبيق</span>
+            تعلم البرمجة<br>
+            <span>بالفهم وليس بالحفظ</span>
         </h1>
 
         <p>
-            منصة تعليمية تساعدك على فهم لغة Python
-            من خلال الشرح والأمثلة والأسئلة والتطبيق العملي.
+            منصة تعليمية متكاملة لتعلم Python من الصفر،
+            مع أمثلة عملية وشرح تفصيلي لكل خطوة.
         </p>
 
-        <a href="#lessons" class="main-btn">ابدأ التعلم</a>
+        <a href="#lessons" class="primary-btn">ابدأ التعلم ←</a>
+    </div>
 
-        <div class="statistics">
-            <div><strong>3</strong><small>محاضرات</small></div>
-            <div><strong>50</strong><small>MCQ</small></div>
-            <div><strong>25</strong><small>برنامج</small></div>
-            <div><strong>30</strong><small>ناتج برنامج</small></div>
-            <div><strong>20</strong><small>تصحيح أخطاء</small></div>
+    <div class="hero-card">
+        <div class="terminal-head">
+            <span></span><span></span><span></span>
+            <small>Python Terminal</small>
         </div>
+        <pre><code>name = "Student"
+for i in range(3):
+    print(name)
+
+# Output:
+Student
+Student
+Student</code></pre>
     </div>
 </section>
+
+<div class="stats">
+    <div><strong>03</strong><span>محاضرات</span></div>
+    <div><strong>50</strong><span>MCQ</span></div>
+    <div><strong>25</strong><span>برنامج</span></div>
+    <div><strong>30</strong><span>توقع ناتج</span></div>
+    <div><strong>20</strong><span>تصحيح أخطاء</span></div>
+</div>
 
 <main>
 
     <section id="lessons">
-        <h2>المحاضرات التعليمية</h2>
-        <p class="section-desc">اختر المحاضرة لعرض شرحها وأمثلتها.</p>
-        <div id="lessonContainer" class="grid"></div>
+        <div class="section-heading">
+            <span>LEARNING</span>
+            <h2>المحاضرات التعليمية</h2>
+            <p>افهم المفاهيم الأساسية مع الأمثلة والتطبيقات.</p>
+        </div>
+        <div id="lessonContainer" class="cards"></div>
         <div id="lessonDetails"></div>
     </section>
 
     <section id="mcq">
-        <h2>اختبر معلوماتك MCQ</h2>
-        <p class="section-desc">اختر الإجابة الصحيحة وستحصل على التصحيح مباشرة.</p>
+        <div class="section-heading">
+            <span>TEST YOURSELF</span>
+            <h2>اختبارات MCQ</h2>
+            <p>اختر الإجابة، ثم اقرأ الشرح التفصيلي.</p>
+        </div>
 
-        <div class="quiz-box">
-            <div id="quizInfo"></div>
+        <div class="quiz-card">
+            <div class="quiz-top">
+                <span id="quizNumber">السؤال 1</span>
+                <span id="quizScore">النتيجة: 0</span>
+            </div>
+
             <div class="progress">
                 <div id="progressBar"></div>
             </div>
 
             <h3 id="question"></h3>
-            <div id="answers"></div>
+            <div id="answers" class="answers"></div>
+            <div id="feedback"></div>
 
-            <p id="feedback"></p>
-
-            <button id="nextBtn" disabled>السؤال التالي</button>
-            <button id="restartBtn">إعادة الاختبار</button>
+            <div class="quiz-actions">
+                <button id="nextBtn" class="primary-btn" disabled>
+                    السؤال التالي
+                </button>
+                <button id="restartBtn" class="secondary-btn">
+                    إعادة الاختبار
+                </button>
+            </div>
         </div>
     </section>
 
     <section id="programs">
-        <h2>برامج Python التطبيقية</h2>
-        <p class="section-desc">برامج مع الكود وشرح الفكرة.</p>
+        <div class="section-heading">
+            <span>PRACTICE</span>
+            <h2>برامج Python</h2>
+            <p>تعلم كتابة البرامج وفهم كل سطر من الكود.</p>
+        </div>
 
-        <input id="programSearch" placeholder="ابحث عن برنامج...">
+        <div class="filters">
+            <input id="programSearch" placeholder="ابحث عن برنامج...">
+            <select id="programCategory">
+                <option value="all">كل البرامج</option>
+                <option value="variables">Variables</option>
+                <option value="conditions">Conditions</option>
+                <option value="loops">Loops</option>
+            </select>
+        </div>
 
-        <select id="programCategory">
-            <option value="all">كل البرامج</option>
-            <option value="variables">Variables</option>
-            <option value="conditions">Conditions</option>
-            <option value="loops">Loops</option>
-        </select>
-
-        <div id="programContainer" class="grid"></div>
+        <div id="programContainer" class="cards"></div>
     </section>
 
     <section id="outputs">
-        <h2>توقع ناتج البرنامج</h2>
-        <p class="section-desc">حاول توقع الناتج قبل الضغط على إظهار الحل.</p>
-        <div id="outputContainer"></div>
+        <div class="section-heading">
+            <span>OUTPUT CHALLENGE</span>
+            <h2>توقع ناتج البرنامج</h2>
+            <p>حلل الكود بنفسك، ثم اعرض الإجابة والتفسير.</p>
+        </div>
+
+        <div id="outputContainer" class="exercise-list"></div>
     </section>
 
     <section id="debug">
-        <h2>تصحيح أخطاء البرامج</h2>
-        <p class="section-desc">اكتشف الخطأ ثم اعرض الكود الصحيح والتفسير.</p>
-        <div id="debugContainer"></div>
+        <div class="section-heading">
+            <span>DEBUGGING</span>
+            <h2>اكتشف الخطأ وصححه</h2>
+            <p>تعلم كيف تكتشف أخطاء Python وتفهم أسبابها.</p>
+        </div>
+
+        <div id="debugContainer" class="exercise-list"></div>
     </section>
 
 </main>
 
 <footer>
-    <div class="profile">
+    <div class="footer-profile">
         <img src="profile.png" alt="صورة الطالب بكر جاسم">
-
         <div>
             <strong>تصميم الطالب بكر جاسم</strong>
             <a href="https://www.instagram.com/b9.is/"
