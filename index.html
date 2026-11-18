@@ -1,111 +1,129 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101827">
-  <title>Python Study Hub | مركز تعلم بايثون</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Study Hub</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#"><span class="brand-mark">Py</span><span>Python <b>Study Hub</b><small data-i18n="subtitle">مركز تعلم البرمجة</small></span></a>
-    <div class="top-actions">
-      <button id="langBtn" class="ghost-btn">English</button>
-      <button id="themeBtn" class="ghost-btn" aria-label="Toggle theme">☼</button>
+
+<header class="navbar">
+    <div class="logo">Py <span>Study Hub</span></div>
+
+    <nav>
+        <a href="#lessons">المحاضرات</a>
+        <a href="#mcq">MCQ</a>
+        <a href="#programs">البرامج</a>
+        <a href="#outputs">النواتج</a>
+        <a href="#debug">تصحيح الأخطاء</a>
+    </nav>
+
+    <button id="themeBtn">تغيير المظهر</button>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <span class="tag">PYTHON LEARNING PLATFORM</span>
+
+        <h1>
+            تعلم Python
+            <span>بالفهم والتطبيق</span>
+        </h1>
+
+        <p>
+            منصة تعليمية تساعدك على فهم لغة Python
+            من خلال الشرح والأمثلة والأسئلة والتطبيق العملي.
+        </p>
+
+        <a href="#lessons" class="main-btn">ابدأ التعلم</a>
+
+        <div class="statistics">
+            <div><strong>3</strong><small>محاضرات</small></div>
+            <div><strong>50</strong><small>MCQ</small></div>
+            <div><strong>25</strong><small>برنامج</small></div>
+            <div><strong>30</strong><small>ناتج برنامج</small></div>
+            <div><strong>20</strong><small>تصحيح أخطاء</small></div>
+        </div>
     </div>
-  </header>
+</section>
 
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="profile-card">
-        <div class="avatar">PY</div>
-        <div><strong data-i18n="welcome">أهلاً بك في رحلة بايثون</strong><small data-i18n="level">من الأساسيات إلى التطبيق</small></div>
-      </div>
-      <nav id="nav">
-        <button class="nav-item active" data-page="home"><span>⌂</span><span data-i18n="navHome">الرئيسية</span></button>
-        <button class="nav-item" data-page="lessons"><span>▤</span><span data-i18n="navLessons">الشروحات</span></button>
-        <button class="nav-item" data-page="programs"><span>⌘</span><span data-i18n="navPrograms">البرامج المهمة</span></button>
-        <button class="nav-item" data-page="mcq"><span>☑</span><span data-i18n="navMcq">اختبار MCQ</span></button>
-        <button class="nav-item" data-page="debug"><span>⚙</span><span data-i18n="navDebug">تصحيح الأخطاء</span></button>
-        <button class="nav-item" data-page="outputs"><span>▣</span><span data-i18n="navOutputs">نتائج البرامج</span></button>
-      </nav>
-      <div class="sidebar-note"><span>✦</span><p data-i18n="sideNote">افهم الفكرة، تتبّع الكود، ثم جرّب بنفسك.</p></div>
-      <div class="sidebar-footer">HTML · CSS · JavaScript</div>
-    </aside>
+<main>
 
-    <main class="main-content">
-      <section class="hero" id="hero">
-        <div class="hero-copy">
-          <span class="eyebrow" data-i18n="heroEyebrow">YOUR PYTHON LEARNING SPACE</span>
-          <h1 data-i18n="heroTitle">تعلّم بايثون <em>بالفهم والتطبيق</em></h1>
-          <p data-i18n="heroDesc">ملخصات واضحة، أمثلة عملية، اختبارات، وتدريب على اكتشاف الأخطاء — في مكان واحد.</p>
-          <button class="primary-btn" data-go="lessons" data-i18n="startLearning">ابدأ التعلّم ←</button>
-        </div>
-        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="python-logo">Py</div><span class="float-code code-a">if x &gt; 0:</span><span class="float-code code-b">for i in range(5)</span><span class="float-code code-c">print("Hello")</span></div>
-      </section>
+    <section id="lessons">
+        <h2>المحاضرات التعليمية</h2>
+        <p class="section-desc">اختر المحاضرة لعرض شرحها وأمثلتها.</p>
+        <div id="lessonContainer" class="grid"></div>
+        <div id="lessonDetails"></div>
+    </section>
 
-      <section class="stats-grid">
-        <article class="stat-card"><span class="stat-icon">▤</span><strong>3</strong><small data-i18n="statLessons">محاضرات مشروحة</small></article>
-        <article class="stat-card"><span class="stat-icon">⌘</span><strong id="programCount">10</strong><small data-i18n="statPrograms">برامج تدريبية</small></article>
-        <article class="stat-card"><span class="stat-icon">☑</span><strong id="questionCount">10</strong><small data-i18n="statQuestions">أسئلة اختيارية</small></article>
-        <article class="stat-card"><span class="stat-icon">⚙</span><strong id="debugCount">8</strong><small data-i18n="statErrors">تحديات تصحيح</small></article>
-      </section>
+    <section id="mcq">
+        <h2>اختبر معلوماتك MCQ</h2>
+        <p class="section-desc">اختر الإجابة الصحيحة وستحصل على التصحيح مباشرة.</p>
 
-      <div class="content-toolbar">
-        <div><span class="eyebrow" data-i18n="workspace">LEARNING WORKSPACE</span><h2 id="pageTitle" data-i18n="homeTitle">لوحة التعلّم</h2></div>
-        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" data-placeholder="searchPlaceholder" placeholder="ابحث عن مفهوم أو برنامج..."></label>
-      </div>
-
-      <section id="page-home" class="page active">
-        <div class="section-heading"><div><h3 data-i18n="continueTitle">ابدأ من هنا</h3><p data-i18n="continueDesc">اختر القسم الذي تريد مراجعته اليوم.</p></div></div>
-        <div class="feature-grid">
-          <button class="feature-card" data-go="lessons"><span class="feature-icon purple">01</span><strong data-i18n="feature1">شرح المحاضرات</strong><small data-i18n="feature1d">Variables · Conditions · Loops</small><span class="card-arrow">↗</span></button>
-          <button class="feature-card" data-go="programs"><span class="feature-icon blue">02</span><strong data-i18n="feature2">برامج مهمة</strong><small data-i18n="feature2d">أمثلة عملية مع شرح وناتج</small><span class="card-arrow">↗</span></button>
-          <button class="feature-card" data-go="mcq"><span class="feature-icon green">03</span><strong data-i18n="feature3">اختبر معلوماتك</strong><small data-i18n="feature3d">MCQ واحسب درجتك فوراً</small><span class="card-arrow">↗</span></button>
-          <button class="feature-card" data-go="debug"><span class="feature-icon orange">04</span><strong data-i18n="feature4">اكتشف الخطأ</strong><small data-i18n="feature4d">حلّل الكود ثم شاهد التصحيح</small><span class="card-arrow">↗</span></button>
-        </div>
-        <div class="two-col">
-          <article class="panel"><div class="panel-head"><h3 data-i18n="roadmap">خريطة المحتوى</h3><span class="tag">Python Basics</span></div>
-            <div class="roadmap">
-              <div class="road-item"><span class="road-dot purple-dot"></span><div><b data-i18n="road1">المحاضرة الثانية</b><small>Variables, Data Types & Operators</small></div><span class="road-number">02</span></div>
-              <div class="road-item"><span class="road-dot blue-dot"></span><div><b data-i18n="road2">المحاضرة الثالثة</b><small>Conditional Statements</small></div><span class="road-number">03</span></div>
-              <div class="road-item"><span class="road-dot green-dot"></span><div><b data-i18n="road3">المحاضرة الرابعة</b><small>Loops: while and for</small></div><span class="road-number">04</span></div>
+        <div class="quiz-box">
+            <div id="quizInfo"></div>
+            <div class="progress">
+                <div id="progressBar"></div>
             </div>
-          </article>
-          <article class="panel tip-panel"><span class="tip-spark">✦</span><h3 data-i18n="tipTitle">نصيحة دراسية</h3><p data-i18n="tipText">عند دراسة أي برنامج، لا تحفظ الناتج فقط. تتبّع قيمة كل متغير بعد كل سطر، واسأل نفسك لماذا نُفّذ هذا السطر؟</p><div class="tip-footer">LEARN · TRACE · PRACTICE</div></article>
+
+            <h3 id="question"></h3>
+            <div id="answers"></div>
+
+            <p id="feedback"></p>
+
+            <button id="nextBtn" disabled>السؤال التالي</button>
+            <button id="restartBtn">إعادة الاختبار</button>
         </div>
-      </section>
+    </section>
 
-      <section id="page-lessons" class="page">
-        <div class="section-heading"><div><h3 data-i18n="lessonsHeading">المحاضرات والشروحات</h3><p data-i18n="lessonsSub">شرح الفكرة، الصيغة، المثال، والنقاط المهمة.</p></div></div>
-        <div id="lessonsList" class="stack-list"></div>
-      </section>
+    <section id="programs">
+        <h2>برامج Python التطبيقية</h2>
+        <p class="section-desc">برامج مع الكود وشرح الفكرة.</p>
 
-      <section id="page-programs" class="page">
-        <div class="section-heading"><div><h3 data-i18n="programsHeading">البرامج المهمة</h3><p data-i18n="programsSub">اقرأ الكود، افهم كل خطوة، ثم اكشف الناتج التجريبي.</p></div><span class="tag">10 EXAMPLES</span></div>
-        <div id="programsList" class="program-grid"></div>
-      </section>
+        <input id="programSearch" placeholder="ابحث عن برنامج...">
 
-      <section id="page-mcq" class="page">
-        <div class="section-heading"><div><h3 data-i18n="mcqHeading">اختبار الاختيار من متعدد</h3><p data-i18n="mcqSub">اختر إجابة واحدة لكل سؤال، ثم اعرض نتيجتك.</p></div><span class="tag">MCQ</span></div>
-        <div class="quiz-toolbar"><span id="quizProgress">0 / 10</span><div class="progress-track"><div id="progressFill"></div></div><button id="resetQuiz" class="small-btn" data-i18n="reset">إعادة الاختبار</button></div>
-        <div id="quizList"></div><button id="submitQuiz" class="primary-btn" data-i18n="checkAnswers">تصحيح الإجابات</button><div id="quizResult" class="result-box hidden" aria-live="polite"></div>
-      </section>
+        <select id="programCategory">
+            <option value="all">كل البرامج</option>
+            <option value="variables">Variables</option>
+            <option value="conditions">Conditions</option>
+            <option value="loops">Loops</option>
+        </select>
 
-      <section id="page-debug" class="page">
-        <div class="section-heading"><div><h3 data-i18n="debugHeading">مختبر تصحيح الأخطاء</h3><p data-i18n="debugSub">حاول تحديد المشكلة قبل الضغط على زر إظهار الحل.</p></div><span class="tag">DEBUG LAB</span></div>
-        <div id="debugList" class="stack-list"></div>
-      </section>
+        <div id="programContainer" class="grid"></div>
+    </section>
 
-      <section id="page-outputs" class="page">
-        <div class="section-heading"><div><h3 data-i18n="outputsHeading">توقّع ناتج البرنامج</h3><p data-i18n="outputsSub">اقرأ الكود وتتبع التنفيذ، ثم اكشف الناتج وتفسيره.</p></div><span class="tag">PREDICT OUTPUT</span></div>
-        <div id="outputsList" class="stack-list"></div>
-      </section>
+    <section id="outputs">
+        <h2>توقع ناتج البرنامج</h2>
+        <p class="section-desc">حاول توقع الناتج قبل الضغط على إظهار الحل.</p>
+        <div id="outputContainer"></div>
+    </section>
 
-      <footer class="site-footer"><span>Python Study Hub</span><span data-i18n="footerText">محتوى تعليمي للمراجعة والتدريب · إصدار تجريبي</span></footer>
-    </main>
-  </div>
-  <script src="script.js"></script>
+    <section id="debug">
+        <h2>تصحيح أخطاء البرامج</h2>
+        <p class="section-desc">اكتشف الخطأ ثم اعرض الكود الصحيح والتفسير.</p>
+        <div id="debugContainer"></div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="profile">
+        <img src="profile.png" alt="صورة الطالب بكر جاسم">
+
+        <div>
+            <strong>تصميم الطالب بكر جاسم</strong>
+            <a href="https://www.instagram.com/b9.is/"
+               target="_blank" rel="noopener noreferrer">
+                @b9.is
+            </a>
+        </div>
+    </div>
+
+    <p>جميع الحقوق محفوظة © <span id="year"></span></p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
